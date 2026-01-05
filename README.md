@@ -1,5 +1,4 @@
-# Simple Web Scraper (crawl4ai)
-Deep web crawler for documentation and static sites.
+# Simple Web Scraper
 
 This project contains a Python script to crawl a web page and its internal sub-links, converting the content into LLM-readable text, while removing headers and footers.
 
@@ -41,6 +40,6 @@ Or using the batch file (Windows):
 The script will:
 1.  Crawl the main page.
 2.  Find all internal links on the main page.
-3.  Recursively crawl discovered sub-links (limited to 100-500 pages to avoid overload).
+3.  Crawl each internal link (limited to 20 sub-links to avoid overload).
 4.  Remove header, footer, nav, script, and style tags.
-5.  Save all content to `crawled_content_full.md`.
+5.  Save all content to `crawled_content.md`.
