@@ -14,6 +14,9 @@ __pycache__/
 *.txt
 !README.md
 docs/
+"cj dropshipping docs/"
+"ebay docs/"
+"serpapi docs/"
 
 # Logs and temp files
 *.log
