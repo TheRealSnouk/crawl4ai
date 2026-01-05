@@ -1,0 +1,2388 @@
+Main Page: https://serpapi.com/google-
+shopping-api (https://serpapi.com/google-
+shopping-api)
+Google Shopping API - SerpApi
+Google Shopping API
+API uptime
+99.771%
+The Google Shopping Results API allows a user to scrape the results of a Google Shopping search.
+The API is accessed through the following endpoint:
+/search?engine=google_shopping
+.
+You can query:
+https://serpapi.com/search?engine=google_shopping&q=coffee (https://serpapi.com/search?engine=google_shopping&q=coffee)
+utilizing a
+GET
+request. Head to the
+playground
+for a live and interactive demo.
+API Parameters
+Search Query
+q
+Required
+Parameter defines the query you want to search. You can use anything that you would use in a regular Google Shopping search.
+Geographic Location
+location
+Optional
+Parameter defines from where you want the search to originate. If several locations match the location requested, we'll pick the most popular one. Head to the
+/locations.json API
+if you need more precise control. The
+location
+and
+uule
+parameters can't be used together. It is recommended to specify
+location
+at the city level in order to simulate a real user’s search. If
+location
+is omitted, the search may take on the location of the proxy.
+uule
+Optional
+Parameter is the Google encoded location you want to use for the search.
+uule
+and
+location
+parameters can't be used together.
+Localization
+google_domain
+Optional
+Parameter defines the Google domain to use. It defaults to
+google.com
+. Head to the
+Google domains
+for a full list of supported Google domains.
+gl
+Optional
+Parameter defines the country to use for the Google search. It's a two-letter country code. (e.g.,
+us
+for the United States,
+uk
+for United Kingdom, or
+fr
+for France) Head to the
+Google Shopping countries
+for a full list of supported Google Shopping countries.
+hl
+Optional
+Parameter defines the language to use for the Google Shopping search. It's a two-letter language code. (e.g.,
+en
+for English,
+es
+for Spanish, or
+fr
+for French) Head to the Google languages for a full list of supported
+Google languages
+.
+Advanced Filters
+shoprs
+Optional
+The parameter defines the token that includes metadata about query and search filter(s). Providing
+q
+parameter alongside the
+shoprs
+is
+not
+required.
+To apply multiple filters join them with
+||
+separator, e.g.
+shoprs_1||shoprs_2||shoprs_3
+.
+min_price
+Optional
+Lower bound of price range query.
+This parameter overrides corresponding filter embedded into
+shoprs
+parameter.
+max_price
+Optional
+Upper bound of price range query.
+This parameter overrides corresponding filter embedded into
+shoprs
+parameter.
+sort_by
+Optional
+Parameter defines the sorting order of the results.
+Available options:
+1
+Price: low to high
+2
+Price: high to low
+This parameter overrides corresponding filter embedded into
+shoprs
+parameter.
+free_shipping
+Optional
+Show only products with free shipping.
+This parameter overrides corresponding filter embedded into
+shoprs
+parameter.
+on_sale
+Optional
+Show only products that are on sale.
+This parameter overrides corresponding filter embedded into
+shoprs
+parameter.
+small_business
+Optional
+Show only products from small business.
+This parameter overrides corresponding filter embedded into
+shoprs
+parameter.
+Pagination
+start
+Optional
+Parameter defines the result offset. It skips the given number of results. It's used for pagination. (e.g.,
+0
+(default) is the first page of results,
+60
+is the 2nd page of results,
+120
+is the 3rd page of results, etc.).
+For the new layout, the parameter is not recommended. To easily retrieve paginated results accurately, it is advisable to follow the link provided in
+serpapi_pagination.next
+.
+Serpapi Parameters
+engine
+Required
+Set parameter to
+google_shopping
+to use the Google Shopping API engine.
+device
+Optional
+Parameter defines the device to use to get the results. It can be set to
+desktop
+(default) to use a regular browser,
+tablet
+to use a tablet browser (currently using iPads), or
+mobile
+to use a mobile browser.
+no_cache
+Optional
+Parameter will force SerpApi to fetch the Google Shopping results even if a cached version is already present. A cache is served only if the query and all parameters are exactly the
+same. Cache expires after 1h. Cached searches are free, and are not counted towards your searches per month. It can be set to
+false
+(default) to allow results from the cache, or
+true
+to disallow results from the cache.
+no_cache
+and
+async
+parameters should not be used together.
+async
+Optional
+Parameter defines the way you want to submit your search to SerpApi. It can be set to
+false
+(default) to open an HTTP connection and keep it open until you got your search results, or
+true
+to just submit your search to SerpApi and retrieve them later. In this case, you'll need to use our
+Searches Archive API
+to retrieve your results.
+async
+and
+no_cache
+parameters should not be used together.
+async
+should not be used on accounts with
+Ludicrous Speed
+enabled.
+zero_trace
+Optional
+Enterprise only. Parameter enables
+ZeroTrace mode
+. It can be set to
+false
+(default) or
+true
+. Enable this mode to skip storing search parameters, search files, and search metadata on our servers. This may make debugging more difficult.
+api_key
+Required
+Parameter defines the SerpApi private key to use.
+output
+Optional
+Parameter defines the final output you want. It can be set to json (default) to get a structured
+JSON
+of the results, or
+html
+to get the raw html retrieved.
+json_restrictor
+Optional
+Parameter defines the fields you want to restrict in the outputs for smaller, faster responses. See
+JSON Restrictor
+for more details.
+API Results
+Full results for
+q
+:
+Office Chair
+JSON Example
+{ "search_metadata": { "id": "6895ae51fc8a2b4359020342", "status": "Success", "json_endpoint":
+"https://serpapi.com/searches/cbb345c0f9de6f20/6895ae51fc8a2b4359020342.json", "created_at": "2025-08-08 07:59:13 UTC", "processed_at": "2025-08-08 07:59:13 UTC",
+"google_shopping_url": "https://www.google.com/search?udm=28&q=Office+Chair&hl=en&gl=us", "raw_html_file":
+"https://serpapi.com/searches/cbb345c0f9de6f20/6895ae51fc8a2b4359020342.html", "total_time_taken": 3.32 }, "search_parameters": { "engine": "google_shopping", "q": "Office
+Chair", "google_domain": "google.com", "hl": "en", "gl": "us", "device": "desktop" }, "search_information": { "query_displayed": "Office Chair", "shopping_results_state": "Results for
+exact spelling" }, "filters": [ { "type": "Refine results", "input_type": "link_with_icon", "options": [ { "text": "Nearby", "shoprs":
+"CAEYAyoMb2ZmaWNlIGNoYWlyMgwIAxIGTmVhcmJ5GAJYu6wgYAI", "serpapi_link": "https://serpapi.com/search.json?
+device=desktop&engine=google_shopping&gl=us&google_domain=google.com&hl=en&q=Office+Chair+nearby&shoprs=CAEYAyoMb2ZmaWNlIGNoYWlyMgwIAxIGTmVhcmJ5GAJY
+}, { "text": "On sale", "shoprs": "CAESBEoCGAEYBioMb2ZmaWNlIGNoYWlyMhMIBhIHT24gc2FsZRgCIgRKAhgBWLusIGAC", "serpapi_link": "https://serpapi.com/search.json?
+device=desktop&engine=google_shopping&gl=us&google_domain=google.com&hl=en&q=Office+Chair+sale&shoprs=CAESBEoCGAEYBioMb2ZmaWNlIGNoYWlyMhMIBhIHT24gc2
+}, { "text": "Get it today", "shoprs": "CAESDZoBCgoIEAA4AUAFSAEYFCoMb2ZmaWNlIGNoYWlyMiUIFBIMR2V0IGl0IHRvZGF5Ig2aAQoKCBAAOAFABUgBKgQQARgBYAI",
+"serpapi_link": "https://serpapi.com/search.json?
+device=desktop&engine=google_shopping&gl=us&google_domain=google.com&hl=en&q=office+chair&shoprs=CAESDZoBCgoIEAA4AUAFSAEYFCoMb2ZmaWNlIGNoYWlyMiUIFB
+}, { "text": "Small business", "shoprs": "CAESAmoAGBYqDG9mZmljZSBjaGFpcjIcCBYSDlNtYWxsIGJ1c2luZXNzIgJqACoEEAEYAWAC", "serpapi_link":
+"https://serpapi.com/search.json?
+device=desktop&engine=google_shopping&gl=us&google_domain=google.com&hl=en&q=office+chair&shoprs=CAESAmoAGBYqDG9mZmljZSBjaGFpcjIcCBYSDlNtYWxsIGJ1c2luZX
+} ] }, ... ], "inline_shopping_results": [ { "position": 1, "block_position": "top", "title": "School Chair, Stackable, 18"H Seat, Ventilated Back", "price": "$279.96", "extracted_price": 279.96,
+"link": "https://www.schooloutfitters.com/catalog/product_info/pfam_id/PFAM52753/products_id/PRO70826?sc_cid=Google_LNT-118-CSW-SO", "tracking_link":
+"https://www.google.com/aclk?sa=l&ai=DChsSEwj7-emZ3_qOAxUqm1oFHZIEADcYACICCAEQARoCdnU&co=1&ase=2&gclid=EAIaIQobChMI-
+_npmd_6jgMVKptaBR2SBAA3EAQYASABEgJEUPD_BwE&cid=CAASJeRo-r-QxnpIRLuHggYEXo2d67PjZCwatn2oFcsWMWNelk-
+U_RY&category=acrcp_v1_48&sig=AOD64_0iyMK2S9kCJesjVv_XAySNByAROA&ctype=5&q=&nis=4&ved=2ahUKEwjE9eWZ3_qOAxWpSjABHZ-
+mD5gQ5bgDKAB6BAgHEAs&adurl=", "source": "school outfitters", "rating": 4.5, "reviews": 32, "thumbnail": "https://encrypted-tbn1.gstatic.com/shopping?
+q=tbn:ANd9GcQjrP2G6joHA7LwEYzqhnm2c-
+C0XviT7SZUgRKq4BFydKqx2CpMjQx0ICdTtClJugFiSMC_VDWFBQ5m1Y3gGhp8gKGtxXqT80mJBVu6hixobcYwz8l2r8MvgGg5EigKABQPz5MvA5w&usqp=CAc",
+"serpapi_thumbnail": "https://serpapi.com/images/url/3UtI8XicDcnbboIwGADgt9mdnBRlJMaUKnUyFhl4wBujxfwtEWihHOQR9wZ7m-
+27_X5_mFKicXX9UdL6JdQjm6h7aWrQqJviVKNVoTesEoKXsJLL_3PRV_ZOaJTXe4vM82qLFp_9Jh0lKwuLTrBx7niyiC8H-A7kzPNfWSAHC4swjwbjA2eJws9dCz6PQ3w9rk--
+F9mFmU6BMOFAQNRwloljFDvv2M4ZH6o7TfvReVq1E3ZAwN5wCJAX7Uc77JDdv7WNFEuM6B98pUd4" }, ... ], "categorized_shopping_results": [ { "title": "Ergonomic office chairs",
+"shopping_results": [ { "position": 1, "title": "Union & Scale Hyken Ergonomic Mesh Swivel Task Chair", "product_id": "7366082511916788769", "product_link":
+"https://www.google.com/search?
+ibp=oshop&q=Coffee&prds=catalogid:7366082511916788769,headlineOfferDocid:5440809400179543781,imageDocid:8908538957125844677,rds:PC_11387561171763529312|PRO
+"immersive_product_page_token":
+"eyJlaSI6ImpZYVVhSnYzRmVPeW10a1BnUG5aZ0F3IiwicHJvZHVjdGlkIjoiIiwiY2F0YWxvZ2lkIjoiNzM2NjA4MjUxMTkxNjc4ODc2OSIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjU0NDA4M
+"serpapi_immersive_product_api": "https://serpapi.com/search.json?
+engine=google_immersive_product&page_token=eyJlaSI6ImpZYVVhSnYzRmVPeW10a1BnUG5aZ0F3IiwicHJvZHVjdGlkIjoiIiwiY2F0YWxvZ2lkIjoiNzM2NjA4MjUxMTkxNjc4ODc2OSI
+"source": "Staples", "source_icon":
+"https://serpapi.com/searches/6895ae51fc8a2b4359020342/images/a057505f6871eb71655a95ecfaf211dc0a5e9df79d9597c0e3c7e3da30136487f23c68976ec0a57372b875e64b23e0
+"multiple_sources": true, "price": "$144.99", "extracted_price": 144.99, "old_price": "$300", "extracted_old_price": 300, "rating": 4.4, "reviews": 7900, "thumbnail":
+"https://serpapi.com/searches/6895ae51fc8a2b4359020342/images/a057505f6871eb71655a95ecfaf211dc0a5e9df79d9597c0e3c7e3da30136487f23c68976ec0a57372b875e64b23e0
+"tag": "51% OFF", "extensions": [ "51% OFF" ], "delivery": "Get it by Wed (Free)" }, ... ] }, ... ], "shopping_results": [ { "position": 1, "title": "Mainstays Executive Ergonomic High Back
+Leather Home Office Desk Chair", "product_id": "7349398578013612374", "product_link": "https://www.google.com/search?
+ibp=oshop&q=Coffee&prds=catalogid:7349398578013612374,headlineOfferDocid:294422122979958866,imageDocid:10818772931031774488,rds:PC_52108447555446672|PROD_
+"immersive_product_page_token":
+"eyJlaSI6ImpZYVVhSnYzRmVPeW10a1BnUG5aZ0F3IiwicHJvZHVjdGlkIjoiIiwiY2F0YWxvZ2lkIjoiNzM0OTM5ODU3ODAxMzYxMjM3NCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjI5NDQ
+"serpapi_immersive_product_api": "https://serpapi.com/search.json?
+engine=google_immersive_product&page_token=eyJlaSI6ImpZYVVhSnYzRmVPeW10a1BnUG5aZ0F3IiwicHJvZHVjdGlkIjoiIiwiY2F0YWxvZ2lkIjoiNzM0OTM5ODU3ODAxMzYxMjM3
+"source": "Walmart", "source_icon":
+"https://serpapi.com/searches/6895ae51fc8a2b4359020342/images/83ef7be2113af3b1dc16130960c26922bd5d7f23fda06c2328337cdbd60fb3ab.png", "multiple_sources": true,
+"price": "$92.00", "extracted_price": 92, "rating": 4.3, "reviews": 64, "snippet": "Easy to set up (24 user reviews)", "extensions": [ "In store, 3 mi" ], "thumbnail":
+"https://serpapi.com/searches/6895ae51fc8a2b4359020342/images/83ef7be2113af3b1dc16130960c26922c61fa58f1c40ac57240b3cc1436e7dde.webp", "thumbnails": [
+"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT4Wet-
+mo0gAB6bsID5e56lAkReLPhLiRan2ljNHoHXRoiC0KeH1Lwg2GoJ2e_TN1vOSrX8vBjtZ6zQUk8JAYOaw760sxgp" ], "serpapi_thumbnails": [
+"https://serpapi.com/images/url/ekZGKXicDcltCoIwAADQE6VTcpkQoQWaiZYZWX9C55jzY1tuaHWQ7tZt6v1930-tlJCOrmOGhpdQuJqpkgGNSFUoijTEe13WXAjKyPqx-
+p_jxtXSR9n8gtWs54C4HizlbmthC3Zum-LoUEc0LZjZNXHAgzzldAP2ODCiiZg-D018z2JjTE5Dbo9eo27wfTy3duhek2JaQCCfRPwAdzQ1Mg" ], "delivery": "Get it today ($10)" }, {
+"position": 2, "title": "Realspace Modern Comfort Pizana Bouclé Fabric High-Back Executive Office Chair", "product_id": "16877169727909013824", "product_link":
+"https://www.google.com/search?
+ibp=oshop&q=Coffee&prds=catalogid:16877169727909013824,headlineOfferDocid:18141755738247990723,imageDocid:13460251683677750693,rds:PC_7632321437832347824|P
+"immersive_product_page_token":
+"eyJlaSI6ImpZYVVhSnYzRmVPeW10a1BnUG5aZ0F3IiwicHJvZHVjdGlkIjoiIiwiY2F0YWxvZ2lkIjoiMTY4NzcxNjk3Mjc5MDkwMTM4MjQiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxODE
+"serpapi_immersive_product_api": "https://serpapi.com/search.json?
+engine=google_immersive_product&page_token=eyJlaSI6ImpZYVVhSnYzRmVPeW10a1BnUG5aZ0F3IiwicHJvZHVjdGlkIjoiIiwiY2F0YWxvZ2lkIjoiMTY4NzcxNjk3Mjc5MDkwMTM4MjQ
+"source": "Office Depot", "source_icon":
+"https://serpapi.com/searches/6895ae51fc8a2b4359020342/images/83ef7be2113af3b1dc16130960c26922fa481b11342f4c155abdc670be27da95.png", "multiple_sources": true,
+"price": "$319.99", "extracted_price": 319.99, "rating": 4.4, "reviews": 55, "snippet": "Comfortable (15 user reviews)", "extensions": [ "In store, 7 mi" ], "thumbnail":
+"https://serpapi.com/searches/6895ae51fc8a2b4359020342/images/83ef7be2113af3b1dc16130960c26922199e3ffa10344e1ca1378b60d62829e4.webp", "thumbnails": [
+"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSdSnOlUOeQILlAf35hqH-
+EsP2wUgF_qXI0G7t1XOubSVNhmIJsTDfCy5krL_5onSS3qzQAg6ihYq3me2wptSlGE45ckOV3" ], "serpapi_thumbnails": [
+"https://serpapi.com/images/url/yzRXvnicDcltCoIwAADQE_mRa0VChJSZIS5Ziv2SnNOJOje3EDtId-s29f6-
+74dpLZRrWZSTaRGaVoYuuW02Sj91S0wyDpZioxAtbw5y_z_Xi6tdQHCFOepTRJMw6r0aQCYvhq9uzpw250LmoR1s9SpHrxJnMRvCq7qf6uMCuykq4MgxBvKdeM2mZQ8JBurMQuM-
+8NeQdCgDP6DINcE" ], "delivery": "Free delivery" }, ... ], "carousel_filters": [ { "text": "Ergonomic Chairs", "shoprs":
+"CAEYCSoMb2ZmaWNlIGNoYWlyMhQICRIQRXJnb25vbWljIENoYWlyc2AB", "serpapi_link": "https://serpapi.com/search.json?
+device=desktop&engine=google_shopping&gl=us&google_domain=google.com&hl=en&q=ergonomic+chairs+office+chair&shoprs=CAEYCSoMb2ZmaWNlIGNoYWlyMhQICRIQRXJn
+"input_type": "link" }, { "text": "Ergonomic", "shoprs": "CAEYEioMb2ZmaWNlIGNoYWlyMg0IEhIJRXJnb25vbWljYAE", "serpapi_link": "https://serpapi.com/search.json?
+device=desktop&engine=google_shopping&gl=us&google_domain=google.com&hl=en&q=ergonomic+office+chair&shoprs=CAEYEioMb2ZmaWNlIGNoYWlyMg0IEhIJRXJnb25vbWljY
+"input_type": "link" }, { "text": "Nearby", "shoprs": "CAEYAyoMb2ZmaWNlIGNoYWlyMgwIAxIGTmVhcmJ5GAJYu6wgYAE", "serpapi_link": "https://serpapi.com/search.json?
+device=desktop&engine=google_shopping&gl=us&google_domain=google.com&hl=en&q=Office+Chair+nearby&shoprs=CAEYAyoMb2ZmaWNlIGNoYWlyMgwIAxIGTmVhcmJ5GAJY
+"input_type": "link_with_icon" }, ... ] "serpapi_pagination": { "next": "https://serpapi.com/search.json?
+device=desktop&engine=google_shopping&gl=us&google_domain=google.com&hl=en&q=Office+Chair&start=10" } }
+Sub-link: https://serpapi.com/plan (https://serpapi.com/plan)
+Sign In - SerpApi
+Hello!
+It's good to
+see you again
+Don't have an account?
+Sign Up
+Sign in to your account
+Sign in with Github
+Sign in with Google
+OR
+Stay signed in
+Forgot Password?
+Don't have an account?
+Sign Up
+© 2016-2026 SerpApi, LLC.
+Sub-link: https://serpapi.com/json-restrictor
+(https://serpapi.com/json-restrictor)
+SerpApi: JSON Restrictor
+Documentation
+Integrations
+Features
+Pricing
+Use cases
+Team
+Careers
+FAQ
+Contact us
+Sign In
+Register
+JSON Restrictor
+Restrict your response to the fields you need for smaller, faster results and more efficient client-side parsing.
+We support passing a
+json_restrictor
+parameter for all engines.
+Examples
+Select only
+organic_results
+.
+json_restrictor
+:
+organic_results
+Try this search
+{ "organic_results": [ { "position": 1, "title": "Coffee", "link": "https://en.wikipedia.org/wiki/Coffee", "redirect_link": "https://www.google.com/url?
+sa=t&source=web&rct=j&opi=89978449&url=https://en.wikipedia.org/wiki/Coffee&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECBYQAQ", "displayed_link":
+"https://en.wikipedia.org › wiki › Coffee", "thumbnail":
+"https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb88a98ec4c675f61ce03c54738029e1ddf1.jpeg", "favicon":
+"https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb8823e8aa311d084504da1d564ee496ea28.webp", "snippet": "Coffee is a
+beverage brewed from roasted coffee beans. Darkly colored, bitter, and slightly acidic, coffee has a stimulating effect on humans, primarily due ...", "snippet_highlighted_words": [
+"Coffee", "coffee", "coffee" ], "source": "Wikipedia" }, { "position": 2, "title": "Blue Bottle Coffee | Fresh Roasted Specialty Coffee", "link": "https://bluebottlecoffee.com/?
+srsltid=AfmBOopDNlGMg82-zZfh6GfH_-xNWkFr8B0EqfxsZhUO1QVzX407FhtL", "redirect_link": "https://www.google.com/url?
+sa=t&source=web&rct=j&opi=89978449&url=https://bluebottlecoffee.com/%3Fsrsltid%3DAfmBOopDNlGMg82-zZfh6GfH_-
+xNWkFr8B0EqfxsZhUO1QVzX407FhtL&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECEAQAQ", "displayed_link": "https://bluebottlecoffee.com", "thumbnail":
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaCUz1RgG8lWzRn0Q8hN7HDgMIlAU_ygcpAdWt9A47lhya0dSSi95j&usqp=CAE&s", "favicon":
+"https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb889ed5a47648013ec7823e5ec6b5305c6c.webp", "snippet": "Blue Bottle
+Coffee is a specialty coffee roaster with cafes in LA, SF, NYC, & Japan. Shop our freshly roasted specialty coffee online & in-store.", "snippet_highlighted_words": [ "Coffee", "coffee",
+"coffee" ], "rich_snippet": { "top": { "detected_extensions": { "price": 2, "currency": "Free – day delivery over $", "unknown": 30 }, "extensions": [ "Free 2–6 day delivery over $40", "30",
+"day returns" ] } }, "source": "Blue Bottle Coffee" }, { "position": 3, "title": "Peet's Coffee | The Original Craft Coffee, Est. 1966", "link": "https://www.peets.com/", "redirect_link":
+"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.peets.com/&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECDYQAQ", "displayed_link":
+"https://www.peets.com", "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-gdff_D45IrKroGT_zvxB4r2Xjs7sf-Hahg5YIgzmuu3mr5Vaf-OC&usqp=CAE&s",
+"favicon": "https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb885e78ccd85bd0f277eb6e62667ba9c873.webp", "snippet": "Since
+1966, Peet's Coffee has sourced and offered superior coffees and teas and adhering to strict high-quality and taste standards. Shop today.", "snippet_highlighted_words": [ "Coffee",
+"coffees" ], "source": "Peet's Coffee" }, { "position": 4, "title": "Organic Whole Bean Coffee | Shop for Fresh ...", "link": "https://puritycoffee.com/collections/whole-bean-coffee?
+srsltid=AfmBOooHdwxYFmkoAfXMujwc1cW5sgsvw8SFGCPnGU_hkF_CAMyXQJJs", "redirect_link": "https://www.google.com/url?
+sa=t&source=web&rct=j&opi=89978449&url=https://puritycoffee.com/collections/whole-bean-
+coffee%3Fsrsltid%3DAfmBOooHdwxYFmkoAfXMujwc1cW5sgsvw8SFGCPnGU_hkF_CAMyXQJJs&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECG8QAQ",
+"displayed_link": "https://puritycoffee.com › collections › whole-bean-coffee", "thumbnail": "https://encrypted-tbn0.gstatic.com/images?
+q=tbn:ANd9GcTQSRIyWslKiByscJUjuLfTEQEgD2xGiFZad1-SxPFgxxjbYYC9Y28Q&usqp=CAE&s", "favicon":
+"https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb88f3f9dbf0efd0cda5b61651281a3f348d.webp", "snippet": "We've created a
+specialty-grade, antioxidant-rich whole bean organic coffee that emphasizes how you feel rather than just how caffeinated you can get.", "snippet_highlighted_words": [ "coffee" ],
+"rich_snippet": { "top": { "detected_extensions": { "store_rating_k": 4.9, "price": 6, "currency": "Free – day delivery over $", "unknown": 30 }, "extensions": [ "4.9store rating (17K)", "$16
+to $162", "Free 6–7 day delivery over $57.51", "30", "day returns" ] } }, "source": "Purity Coffee" }, { "position": 5, "title": "Starbucks Coffee Company", "link":
+"https://www.starbucks.com/", "redirect_link": "https://www.google.com/url?
+sa=t&source=web&rct=j&opi=89978449&url=https://www.starbucks.com/&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECF4QAQ", "displayed_link":
+"https://www.starbucks.com", "favicon":
+"https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb884e14e8be51b2b0a650ed0084d45824d3.webp", "snippet": "More than just
+great coffee. Explore the menu, sign up for Starbucks® Rewards, manage your gift card and more.", "snippet_highlighted_words": [ "coffee" ], "source": "Starbucks" }, { "position": 6,
+"title": "r/Coffee", "link": "https://www.reddit.com/r/Coffee/", "redirect_link": "https://www.google.com/url?
+sa=t&source=web&rct=j&opi=89978449&url=https://www.reddit.com/r/Coffee/&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECDwQAQ", "displayed_link": "2.1M+ followers",
+"favicon": "https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb88cc0af4c0a718396428fbc34ea8f229b9.webp", "snippet": "thread
+where you can share what you are brewing or ask for bean recommendations. This is a place to share and talk about your favorite coffee roasters or beans.",
+"snippet_highlighted_words": [ "coffee" ], "sitelinks": { "list": [ { "title": "Local Coffee Roaster? : r/ithaca", "link":
+"https://www.reddit.com/r/ithaca/comments/1fotncw/local_coffee_roaster/", "date": "an hour ago" }, { "title": "Best Coffee Spot : r/austinfood", "link":
+"https://www.reddit.com/r/austinfood/comments/1fnv9au/best_coffee_spot/", "date": "Sep 23, 2024" }, { "title": "ISO best coffee shop in Manhattan where you can buy ...", "link":
+"https://www.reddit.com/r/FoodNYC/comments/1fntnij/iso_best_coffee_shop_in_manhattan_where_you_can/", "date": "Sep 23, 2024" } ] }, "source": "Reddit · r/Coffee" }, { "position":
+7, "title": "What is Coffee?", "link": "https://www.ncausa.org/About-Coffee/What-is-Coffee", "redirect_link": "https://www.google.com/url?
+sa=t&source=web&rct=j&opi=89978449&url=https://www.ncausa.org/About-Coffee/What-is-Coffee&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECDcQAQ",
+"displayed_link": "https://www.ncausa.org › About Coffee", "thumbnail": "https://encrypted-tbn0.gstatic.com/images?
+q=tbn:ANd9GcTp9mGEiLrFPJTDgxbtySMTOc3UNvBpZhZ7IzhkzBRVYS-CBxbj9EVa&usqp=CAE&s", "snippet": "Coffee traces its origin to a genus of plants known as Coffea. Within
+the genus there are over 500 genera and 6,000 species of tropical trees and shrubs.", "snippet_highlighted_words": [ "Coffee" ], "source": "National Coffee Association" }, { "position":
+8, "title": "Specialty Coffee | Wonderstate", "link": "https://wonderstate.com/?srsltid=AfmBOorXmqKTPUvW0mOV9wztLeDREYbcs60mvVqkLY-BD0UAfezbdmCO", "redirect_link":
+"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://wonderstate.com/%3Fsrsltid%3DAfmBOorXmqKTPUvW0mOV9wztLeDREYbcs60mvVqkLY-
+BD0UAfezbdmCO&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECDsQAQ", "displayed_link": "https://wonderstate.com", "thumbnail": "https://encrypted-
+tbn0.gstatic.com/images?q=tbn:ANd9GcT-7ZGtnv23Q3Oc8mVFmx10i-G4GH4anTVl1hVpyRcuc21emi-9CgRx&usqp=CAE&s", "favicon":
+"https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb88e6c21911d8af9d1e7060e7bdacb3cd1f.webp", "snippet": "Award-winning,
+organic coffee roasters in Wisconsin. 100% solar powered. Paying farmers more with a minimum price guarantee that's double the Fair Trade ...", "snippet_highlighted_words": [
+"coffee" ], "rich_snippet": { "top": { "detected_extensions": { "price": 4, "currency": "Free – day delivery over $", "unknown": 30 }, "extensions": [ "Free 4–7 day delivery over $50", "30",
+"day returns" ] } }, "source": "Wonderstate Coffee" } ] }
+Select
+local_map
+and the first result of
+organic_results
+.
+json_restrictor
+:
+local_map, organic_results[0]
+Try this search
+{ "local_map": { "link": "https://www.google.com/search?
+sca_esv=c739495d99abe72c&sca_upv=1&gl=us&hl=en&q=Coffee&npsic=0&rflfq=1&rldoc=1&rllag=30287342,-97735387,3628&tbm=lcl&sa=X&ved=2ahUKEwioqfKjst2IAxU4MVkFHX
+"image": "https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/1440a5ac62d0aa27110540efeda04a8a.png", "gps_coordinates": { "latitude": 30.287342, "longitude":
+-97.735387 } }, "organic_results": [ { "position": 1, "title": "Coffee", "link": "https://en.wikipedia.org/wiki/Coffee", "redirect_link": "https://www.google.com/url?
+sa=t&source=web&rct=j&opi=89978449&url=https://en.wikipedia.org/wiki/Coffee&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECBYQAQ", "displayed_link":
+"https://en.wikipedia.org › wiki › Coffee", "thumbnail":
+"https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb88a98ec4c675f61ce03c54738029e1ddf1.jpeg", "favicon":
+"https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb8823e8aa311d084504da1d564ee496ea28.webp", "snippet": "Coffee is a
+beverage brewed from roasted coffee beans. Darkly colored, bitter, and slightly acidic, coffee has a stimulating effect on humans, primarily due ...", "snippet_highlighted_words": [
+"Coffee", "coffee", "coffee" ], "source": "Wikipedia" } ] }
+Select the first three results of
+organic_results
+.
+json_restrictor
+:
+organic_results[0:3]
+Try this search
+{ "organic_results": [ { "position": 1, "title": "Coffee", "link": "https://en.wikipedia.org/wiki/Coffee", "redirect_link": "https://www.google.com/url?
+sa=t&source=web&rct=j&opi=89978449&url=https://en.wikipedia.org/wiki/Coffee&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECBYQAQ", "displayed_link":
+"https://en.wikipedia.org › wiki › Coffee", "thumbnail":
+"https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb88a98ec4c675f61ce03c54738029e1ddf1.jpeg", "favicon":
+"https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb8823e8aa311d084504da1d564ee496ea28.webp", "snippet": "Coffee is a
+beverage brewed from roasted coffee beans. Darkly colored, bitter, and slightly acidic, coffee has a stimulating effect on humans, primarily due ...", "snippet_highlighted_words": [
+"Coffee", "coffee", "coffee" ], "source": "Wikipedia" }, { "position": 2, "title": "Blue Bottle Coffee | Fresh Roasted Specialty Coffee", "link": "https://bluebottlecoffee.com/?
+srsltid=AfmBOopDNlGMg82-zZfh6GfH_-xNWkFr8B0EqfxsZhUO1QVzX407FhtL", "redirect_link": "https://www.google.com/url?
+sa=t&source=web&rct=j&opi=89978449&url=https://bluebottlecoffee.com/%3Fsrsltid%3DAfmBOopDNlGMg82-zZfh6GfH_-
+xNWkFr8B0EqfxsZhUO1QVzX407FhtL&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECEAQAQ", "displayed_link": "https://bluebottlecoffee.com", "thumbnail":
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaCUz1RgG8lWzRn0Q8hN7HDgMIlAU_ygcpAdWt9A47lhya0dSSi95j&usqp=CAE&s", "favicon":
+"https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb889ed5a47648013ec7823e5ec6b5305c6c.webp", "snippet": "Blue Bottle
+Coffee is a specialty coffee roaster with cafes in LA, SF, NYC, & Japan. Shop our freshly roasted specialty coffee online & in-store.", "snippet_highlighted_words": [ "Coffee", "coffee",
+"coffee" ], "rich_snippet": { "top": { "detected_extensions": { "price": 2, "currency": "Free – day delivery over $", "unknown": 30 }, "extensions": [ "Free 2–6 day delivery over $40", "30",
+"day returns" ] } }, "source": "Blue Bottle Coffee" }, { "position": 3, "title": "Peet's Coffee | The Original Craft Coffee, Est. 1966", "link": "https://www.peets.com/", "redirect_link":
+"https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.peets.com/&ved=2ahUKEwioqfKjst2IAxU4MVkFHXHuMmQQFnoECDYQAQ", "displayed_link":
+"https://www.peets.com", "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-gdff_D45IrKroGT_zvxB4r2Xjs7sf-Hahg5YIgzmuu3mr5Vaf-OC&usqp=CAE&s",
+"favicon": "https://serpapi.com/searches/66f3a3b0922cce80bbafc18e/images/7f2b8526c2e58d1269c65867e14ccb885e78ccd85bd0f277eb6e62667ba9c873.webp", "snippet": "Since
+1966, Peet's Coffee has sourced and offered superior coffees and teas and adhering to strict high-quality and taste standards. Shop today.", "snippet_highlighted_words": [ "Coffee",
+"coffees" ], "source": "Peet's Coffee" } ] }
+Select
+organic_results
+with only
+title
+of each result.
+json_restrictor
+:
+organic_results[].title
+Try this search
+{ "organic_results": [ { "title": "Coffee" }, { "title": "Blue Bottle Coffee | Fresh Roasted Specialty Coffee" }, { "title": "Peet's Coffee | The Original Craft Coffee, Est. 1966" }, { "title":
+"Organic Whole Bean Coffee | Shop for Fresh ..." }, { "title": "Starbucks Coffee Company" }, { "title": "r/Coffee" }, { "title": "What is Coffee?" }, { "title": "Specialty Coffee | Wonderstate" }
+] }
+Select
+organic_results
+with
+title
+and
+snippet
+of each result.
+json_restrictor
+:
+organic_results[].{title, snippet}
+Try this search
+{ "organic_results": [ { "title": "Coffee", "snippet": "Coffee is a beverage brewed from roasted coffee beans. Darkly colored, bitter, and slightly acidic, coffee has a stimulating effect on
+humans, primarily due ..." } { "title": "Blue Bottle Coffee | Fresh Roasted Specialty Coffee", "snippet": "Blue Bottle Coffee is a specialty coffee roaster with cafes in LA, SF, NYC, &
+Japan. Shop our freshly roasted specialty coffee online & in-store." } { "title": "Peet's Coffee | The Original Craft Coffee, Est. 1966", "snippet": "Since 1966, Peet's Coffee has sourced
+and offered superior coffees and teas and adhering to strict high-quality and taste standards. Shop today." } { "title": "Organic Whole Bean Coffee | Shop for Fresh ...", "snippet":
+"We've created a specialty-grade, antioxidant-rich whole bean organic coffee that emphasizes how you feel rather than just how caffeinated you can get." } { "title": "Starbucks Coffee
+Company", "snippet": "More than just great coffee. Explore the menu, sign up for Starbucks® Rewards, manage your gift card and more." } { "title": "r/Coffee", "snippet": "thread where
+you can share what you are brewing or ask for bean recommendations. This is a place to share and talk about your favorite coffee roasters or beans." } { "title": "What is Coffee?",
+"snippet": "Coffee traces its origin to a genus of plants known as Coffea. Within the genus there are over 500 genera and 6,000 species of tropical trees and shrubs." } { "title":
+"Specialty Coffee | Wonderstate", "snippet": "Award-winning, organic coffee roasters in Wisconsin. 100% solar powered. Paying farmers more with a minimum price guarantee that's
+double the Fair Trade ..." } ] }
+Select
+organic_results
+with
+title
+and
+link
+s of
+sitelinks.inline
+.
+json_restrictor
+:
+organic_results[].{title, sitelinks.inline[].link}
+Try this search
+{ "organic_results": [ { "title": "Coffee", "sitelinks": { "inline": [ { "link": "https://en.wikipedia.org/wiki/History_of_coffee" }, { "link": "https://en.wikipedia.org/wiki/Coffee_bean" }, { "link":
+"https://en.wikipedia.org/wiki/Coffee_preparation" }, { "link": "https://en.wikipedia.org/wiki/Coffee_production" } ] } }, { "title": "Peet's Coffee | The Original Craft Coffee, Est. 1966" }, {
+"title": "What is Coffee?" }, { "title": "r/Coffee" }, { "title": "Starbucks Coffee Company" }, { "title": "coffee brand coffee: premium fresh roasted coffee", "sitelinks": { "inline": [ { "link":
+"https://coffeebrandcoffee.com/collections/coffee" }, { "link": "https://coffeebrandcoffee.com/products/003" }, { "link": "https://coffeebrandcoffee.com/products/004" }, { "link":
+"https://coffeebrandcoffee.com/collections/all" } ] } }, { "title": "Counter Culture Coffee", "sitelinks": { "inline": [ { "link": "https://counterculturecoffee.com/pages/training-centers" }, { "link":
+"https://counterculturecoffee.com/pages/history" }, { "link": "https://counterculturecoffee.com/pages/on-going-subscription" }, { "link": "https://counterculturecoffee.com/collections/all" } ]
+} }, { "title": "Coffee drinkers reap health boost – but only if they do it in ..." }, { "title": "The Coffee Bean & Tea Leaf | CBTL" } ] }
+Operators
+Operator
+Example
+Description
+Object index:
+.
+foo.bar
+Select the field
+bar
+of the object
+foo
+.
+Array index:
+[]
+foo[0]
+Select the first item of the array
+foo
+.
+Select full array:
+[]
+foo[]
+Select all items of the array
+foo
+.
+Array slice:
+[:]
+foo[0:2]
+Select the first two items of the array
+foo
+.
+This is a half-open range, meaning it includes the first index but not the last.
+Subquery:
+.{query1, query2, ...}
+foo.{bar, baz[].qux}
+Select the fields
+bar
+and
+baz
+of the object
+foo
+, and further select only
+qux
+of the array
+baz
+.
+A query can be any valid combination of the operators.
+Sub-link: https://serpapi.com/google-shopping-countries
+(https://serpapi.com/google-shopping-countries)
+Google Shopping GL Parameter: Supported Google Shopping Countries - SerpApi
+Google Shopping GL Parameter: Supported Google Shopping Countries
+Download the full
+JSON
+list of
+supported Google Shopping Countries:
+Download
+gl
+Country
+Example
+ai
+Anguilla
+https://serpapi.com/search?q=Coffee&gl=ai (https://serpapi.com/search?q=Coffee&gl=ai)
+ar
+Argentina
+https://serpapi.com/search?q=Coffee&gl=ar (https://serpapi.com/search?q=Coffee&gl=ar)
+aw
+Aruba
+https://serpapi.com/search?q=Coffee&gl=aw (https://serpapi.com/search?q=Coffee&gl=aw)
+au
+Australia
+https://serpapi.com/search?q=Coffee&gl=au (https://serpapi.com/search?q=Coffee&gl=au)
+at
+Austria
+https://serpapi.com/search?q=Coffee&gl=at (https://serpapi.com/search?q=Coffee&gl=at)
+be
+Belgium
+https://serpapi.com/search?q=Coffee&gl=be (https://serpapi.com/search?q=Coffee&gl=be)
+bm
+Bermuda
+https://serpapi.com/search?q=Coffee&gl=bm (https://serpapi.com/search?q=Coffee&gl=bm)
+br
+Brazil
+https://serpapi.com/search?q=Coffee&gl=br (https://serpapi.com/search?q=Coffee&gl=br)
+io
+British Indian Ocean Territory
+https://serpapi.com/search?q=Coffee&gl=io (https://serpapi.com/search?q=Coffee&gl=io)
+ca
+Canada
+https://serpapi.com/search?q=Coffee&gl=ca (https://serpapi.com/search?q=Coffee&gl=ca)
+ky
+Cayman Islands
+https://serpapi.com/search?q=Coffee&gl=ky (https://serpapi.com/search?q=Coffee&gl=ky)
+cl
+Chile
+https://serpapi.com/search?q=Coffee&gl=cl (https://serpapi.com/search?q=Coffee&gl=cl)
+cx
+Christmas Island
+https://serpapi.com/search?q=Coffee&gl=cx (https://serpapi.com/search?q=Coffee&gl=cx)
+cc
+Cocos (Keeling) Islands
+https://serpapi.com/search?q=Coffee&gl=cc (https://serpapi.com/search?q=Coffee&gl=cc)
+co
+Colombia
+https://serpapi.com/search?q=Coffee&gl=co (https://serpapi.com/search?q=Coffee&gl=co)
+cz
+Czech Republic
+https://serpapi.com/search?q=Coffee&gl=cz (https://serpapi.com/search?q=Coffee&gl=cz)
+dk
+Denmark
+https://serpapi.com/search?q=Coffee&gl=dk (https://serpapi.com/search?q=Coffee&gl=dk)
+fk
+Falkland Islands (Malvinas)
+https://serpapi.com/search?q=Coffee&gl=fk (https://serpapi.com/search?q=Coffee&gl=fk)
+fi
+Finland
+https://serpapi.com/search?q=Coffee&gl=fi (https://serpapi.com/search?q=Coffee&gl=fi)
+fr
+France
+https://serpapi.com/search?q=Coffee&gl=fr (https://serpapi.com/search?q=Coffee&gl=fr)
+gf
+French Guiana
+https://serpapi.com/search?q=Coffee&gl=gf (https://serpapi.com/search?q=Coffee&gl=gf)
+pf
+French Polynesia
+https://serpapi.com/search?q=Coffee&gl=pf (https://serpapi.com/search?q=Coffee&gl=pf)
+tf
+French Southern Territories
+https://serpapi.com/search?q=Coffee&gl=tf (https://serpapi.com/search?q=Coffee&gl=tf)
+de
+Germany
+https://serpapi.com/search?q=Coffee&gl=de (https://serpapi.com/search?q=Coffee&gl=de)
+gr
+Greece
+https://serpapi.com/search?q=Coffee&gl=gr (https://serpapi.com/search?q=Coffee&gl=gr)
+gp
+Guadeloupe
+https://serpapi.com/search?q=Coffee&gl=gp (https://serpapi.com/search?q=Coffee&gl=gp)
+hm
+Heard Island and Mcdonald Islands
+https://serpapi.com/search?q=Coffee&gl=hm (https://serpapi.com/search?q=Coffee&gl=hm)
+hk
+Hong Kong
+https://serpapi.com/search?q=Coffee&gl=hk (https://serpapi.com/search?q=Coffee&gl=hk)
+hu
+Hungary
+https://serpapi.com/search?q=Coffee&gl=hu (https://serpapi.com/search?q=Coffee&gl=hu)
+in
+India
+https://serpapi.com/search?q=Coffee&gl=in (https://serpapi.com/search?q=Coffee&gl=in)
+id
+Indonesia
+https://serpapi.com/search?q=Coffee&gl=id (https://serpapi.com/search?q=Coffee&gl=id)
+ie
+Ireland
+https://serpapi.com/search?q=Coffee&gl=ie (https://serpapi.com/search?q=Coffee&gl=ie)
+il
+Israel
+https://serpapi.com/search?q=Coffee&gl=il (https://serpapi.com/search?q=Coffee&gl=il)
+it
+Italy
+https://serpapi.com/search?q=Coffee&gl=it (https://serpapi.com/search?q=Coffee&gl=it)
+jp
+Japan
+https://serpapi.com/search?q=Coffee&gl=jp (https://serpapi.com/search?q=Coffee&gl=jp)
+kr
+Korea, Republic of
+https://serpapi.com/search?q=Coffee&gl=kr (https://serpapi.com/search?q=Coffee&gl=kr)
+my
+Malaysia
+https://serpapi.com/search?q=Coffee&gl=my (https://serpapi.com/search?q=Coffee&gl=my)
+mq
+Martinique
+https://serpapi.com/search?q=Coffee&gl=mq (https://serpapi.com/search?q=Coffee&gl=mq)
+yt
+Mayotte
+https://serpapi.com/search?q=Coffee&gl=yt (https://serpapi.com/search?q=Coffee&gl=yt)
+mx
+Mexico
+https://serpapi.com/search?q=Coffee&gl=mx (https://serpapi.com/search?q=Coffee&gl=mx)
+ms
+Montserrat
+https://serpapi.com/search?q=Coffee&gl=ms (https://serpapi.com/search?q=Coffee&gl=ms)
+nl
+Netherlands
+https://serpapi.com/search?q=Coffee&gl=nl (https://serpapi.com/search?q=Coffee&gl=nl)
+nc
+New Caledonia
+https://serpapi.com/search?q=Coffee&gl=nc (https://serpapi.com/search?q=Coffee&gl=nc)
+nz
+New Zealand
+https://serpapi.com/search?q=Coffee&gl=nz (https://serpapi.com/search?q=Coffee&gl=nz)
+nf
+Norfolk Island
+https://serpapi.com/search?q=Coffee&gl=nf (https://serpapi.com/search?q=Coffee&gl=nf)
+no
+Norway
+https://serpapi.com/search?q=Coffee&gl=no (https://serpapi.com/search?q=Coffee&gl=no)
+ph
+Philippines
+https://serpapi.com/search?q=Coffee&gl=ph (https://serpapi.com/search?q=Coffee&gl=ph)
+pl
+Poland
+https://serpapi.com/search?q=Coffee&gl=pl (https://serpapi.com/search?q=Coffee&gl=pl)
+pt
+Portugal
+https://serpapi.com/search?q=Coffee&gl=pt (https://serpapi.com/search?q=Coffee&gl=pt)
+re
+Reunion
+https://serpapi.com/search?q=Coffee&gl=re (https://serpapi.com/search?q=Coffee&gl=re)
+ro
+Romania
+https://serpapi.com/search?q=Coffee&gl=ro (https://serpapi.com/search?q=Coffee&gl=ro)
+ru
+Russian Federation
+https://serpapi.com/search?q=Coffee&gl=ru (https://serpapi.com/search?q=Coffee&gl=ru)
+pm
+Saint Pierre and Miquelon
+https://serpapi.com/search?q=Coffee&gl=pm (https://serpapi.com/search?q=Coffee&gl=pm)
+sa
+Saudi Arabia
+https://serpapi.com/search?q=Coffee&gl=sa (https://serpapi.com/search?q=Coffee&gl=sa)
+sg
+Singapore
+https://serpapi.com/search?q=Coffee&gl=sg (https://serpapi.com/search?q=Coffee&gl=sg)
+sk
+Slovakia
+https://serpapi.com/search?q=Coffee&gl=sk (https://serpapi.com/search?q=Coffee&gl=sk)
+za
+South Africa
+https://serpapi.com/search?q=Coffee&gl=za (https://serpapi.com/search?q=Coffee&gl=za)
+gs
+South Georgia and the South Sandwich Islands
+https://serpapi.com/search?q=Coffee&gl=gs (https://serpapi.com/search?q=Coffee&gl=gs)
+es
+Spain
+https://serpapi.com/search?q=Coffee&gl=es (https://serpapi.com/search?q=Coffee&gl=es)
+se
+Sweden
+https://serpapi.com/search?q=Coffee&gl=se (https://serpapi.com/search?q=Coffee&gl=se)
+ch
+Switzerland
+https://serpapi.com/search?q=Coffee&gl=ch (https://serpapi.com/search?q=Coffee&gl=ch)
+tw
+Taiwan, Province of China
+https://serpapi.com/search?q=Coffee&gl=tw (https://serpapi.com/search?q=Coffee&gl=tw)
+th
+Thailand
+https://serpapi.com/search?q=Coffee&gl=th (https://serpapi.com/search?q=Coffee&gl=th)
+tk
+Tokelau
+https://serpapi.com/search?q=Coffee&gl=tk (https://serpapi.com/search?q=Coffee&gl=tk)
+tr
+Turkiye
+https://serpapi.com/search?q=Coffee&gl=tr (https://serpapi.com/search?q=Coffee&gl=tr)
+tc
+Turks and Caicos Islands
+https://serpapi.com/search?q=Coffee&gl=tc (https://serpapi.com/search?q=Coffee&gl=tc)
+ua
+Ukraine
+https://serpapi.com/search?q=Coffee&gl=ua (https://serpapi.com/search?q=Coffee&gl=ua)
+ae
+United Arab Emirates
+https://serpapi.com/search?q=Coffee&gl=ae (https://serpapi.com/search?q=Coffee&gl=ae)
+uk
+United Kingdom
+https://serpapi.com/search?q=Coffee&gl=uk (https://serpapi.com/search?q=Coffee&gl=uk)
+gb
+United Kingdom
+https://serpapi.com/search?q=Coffee&gl=gb (https://serpapi.com/search?q=Coffee&gl=gb)
+us
+United States
+https://serpapi.com/search?q=Coffee&gl=us (https://serpapi.com/search?q=Coffee&gl=us)
+vn
+Viet Nam
+https://serpapi.com/search?q=Coffee&gl=vn (https://serpapi.com/search?q=Coffee&gl=vn)
+vg
+Virgin Islands, British
+https://serpapi.com/search?q=Coffee&gl=vg (https://serpapi.com/search?q=Coffee&gl=vg)
+wf
+Wallis and Futuna
+https://serpapi.com/search?q=Coffee&gl=wf (https://serpapi.com/search?q=Coffee&gl=wf)
+Sub-link: https://serpapi.com/zero-trace-mode
+(https://serpapi.com/zero-trace-mode)
+SerpApi: ZeroTrace Mode
+Documentation
+Integrations
+Features
+Pricing
+Use cases
+Team
+Careers
+FAQ
+Contact us
+Sign In
+Register
+ZeroTrace Mode
+Keep your searches confidential.
+Available with all Enterprise plans
+Your data won't leave a trace
+When you enable ZeroTrace Mode, we won't store search parameters, search files, or search data on our servers. Once your search is done, it's as if it were never here.
+Enable by just adding
+zero_trace=true
+to your search
+ZeroTrace Mode is easy to enable or disable. Just add
+zero_trace=true
+to the searches you want ZeroTrace on, and omit it for the searches you don't.
+Easier Compliance
+ZeroTrace mode can make it easier to comply with regulations (GDPR, HIPAA, and CCPA) and certifications (SOC 2 Type 1, SOC 2 Type 2, and ISO 27001).
+FAQs
+How to access ZeroTrace mode?
+ZeroTrace mode is only included in Enterprise plans. There is no cap on usage.
+Can this feature be used with all of SerpApi's search APIs?
+Yes, ZeroTrace mode is fully supported on all SerpApi's search APIs.
+How does ZeroTrace mode work?
+We skip saving parameters, metadata, and the actual search in our database entirely. We also don't store any files or search-related data on any of our servers, including our servers
+that connect to the actual search engines. For third-party services or search engines that are by nature outside our direct control, we add a Do Not Track (DNT) header to all HTTP
+requests that may contain ZeroTrace search data.
+How can I debug ZeroTrace Searches?
+Unfortunately, it's more difficult to debug ZeroTrace searches. We recommend re-running without the
+zero_trace=true
+flag, finding them back on your dashboard, and contacting support if needed.
+Sub-link: https://serpapi.com/playground?
+engine=google_shopping&q=Office+Chair&highlight=shopping_r
+(https://serpapi.com/playground?
+engine=google_shopping&q=Office+Chair&highlight=shopping_r
+SerpApi Playground - SerpApi
+SerpApi Playground
+x
+HTML URL:
+JSON URL:
+x
+x
+Google
+Search
+About This Result
+AI Mode
+AI Overview
+Autocomplete
+Events
+Forums
+Immersive Product
+Local
+Local Services
+News
+Related Questions
+Reverse Image
+Shopping
+Short Videos
+Travel Explore
+Videos
+Google Ads Transparency Center
+Search
+Ad Details
+Google Finance
+Search
+Markets
+Google Flights
+Flights
+Autocomplete
+Google Hotels
+Search
+Autocomplete
+Google Images
+Search
+Related Content
+Google Jobs
+Search
+Listing
+Google Lens
+Search
+Image Sources
+Google Light
+Search
+Images
+News
+Videos
+Google Maps
+Search
+Autocomplete
+Contributor Reviews
+Directions
+Photos
+Photo Meta
+Posts
+Reviews
+Google Patents
+Search
+Details
+Google Play
+Search
+Play Product
+Books Store
+Games Store
+Movies Store
+Google Shopping Light
+Shopping
+Filters
+Google Scholar
+Search
+Author
+Cite
+Google Trends
+Search
+Autocomplete
+News
+Trending Now
+Apple App Store
+Search
+Product
+Reviews
+Baidu
+Search
+News
+Bing
+Search
+Images
+Maps
+News
+Product
+Reverse Image
+Shopping
+Videos
+Copilot
+Amazon
+Search
+Amazon Product
+DuckDuckGo
+Search
+Maps
+News
+DuckDuckGo Light
+Search
+Ebay
+Search
+Product
+Facebook
+Profile
+Naver
+Search
+OpenTable
+Reviews
+The Home Depot
+Search
+Product
+Product Reviews
+Tripadvisor
+Search
+Place
+Walmart
+Search
+Product
+Product Sellers
+Product Reviews
+Yahoo!
+Search
+Images
+Shopping
+Videos
+Yandex
+Search
+Images
+Videos
+Yelp
+Search
+Place
+Reviews
+YouTube
+Search
+Video
+Video Transcript
+x
+Engine
+History
+Export To Code
+Sub-link: https://serpapi.com/search-archive-api
+(https://serpapi.com/search-archive-api)
+Search Archive API - SerpApi
+Search Archive API
+Search Archive API allows you to fetch searches created with our API. Searches don't have to be completed to be retrieved. Search status can be
+Queued
+,
+Processing
+,
+Success
+, or an error. You can retrieve the
+html
+, or the
+json
+of your search up to 31 days after the search has been completed.
+You can query
+https://serpapi.com/searches/{search_id} (https://serpapi.com/searches/%7Bsearch_id%7D)
+using a
+GET
+request with these parameters:
+API Parameters
+search_id
+Required
+Parameter is the search ID provided by the search API endpoint at
+['search_metadata']['id']
+. (e.g.,
+5b50d58a304bda2fca30bac9
+)
+api_key
+Required
+Parameter defines the SerpApi private key to use.
+output
+Optional
+Parameter defines the file you want. It can be set to
+json
+(default) to get a structured JSON of the results, or
+html
+to get the raw html retrieved.
+API Examples
+Search Archive API example
+GET
+https://serpapi.com/searches/5b50d58a304bda2fca30bac9.json?api_key=SECRET_API_KEY (https://serpapi.com/searches/5b50d58a304bda2fca30bac9.json?
+api_key=SECRET_API_KEY)
+Pixel Position
+on Search Archive API example
+Pixel Position API can be performed on archive searches by setting the output to
+json_with_pixel_position
+.
+GET
+https://serpapi.com/searches/5b50d58a304bda2fca30bac9.json_with_pixel_position?api_key=SECRET_API_KEY
+(https://serpapi.com/searches/5b50d58a304bda2fca30bac9.json_with_pixel_position?api_key=SECRET_API_KEY)
+Sub-link: https://serpapi.com/status/google_shopping
+(https://serpapi.com/status/google_shopping)
+Api Status for Google Shopping - SerpApi
+Api Status for Google Shopping
+Last 30 days (hourly)
+All Engines
+Amazon
+Amazon Product
+Apple App Store
+Apple Product
+Apple Reviews
+Baidu
+Baidu News
+Bing
+Bing Copilot
+Bing Images
+Bing Maps
+Bing News
+Bing Product
+Bing Reverse Image
+Bing Shopping
+Bing Videos
+Duckduckgo
+Duckduckgo Light
+Duckduckgo Maps
+Duckduckgo News
+Ebay
+Ebay Product
+Facebook Profile
+Google
+Google About This Result
+Google Ads Transparency Center
+Google Ads Transparency Center Ad Details
+Google Ai Mode
+Google Ai Overview
+Google Autocomplete
+Google Events
+Google Finance
+Google Finance Markets
+Google Flights
+Google Flights Autocomplete
+Google Forums
+Google Hotels
+Google Hotels Autocomplete
+Google Images
+Google Images Light
+Google Images Related Content
+Google Immersive Product
+Google Jobs
+Google Jobs Listing
+Google Lens
+Google Lens Image Sources
+Google Light
+Google Light Fast
+Google Local
+Google Local Services
+Google Maps
+Google Maps Autocomplete
+Google Maps Contributor Reviews
+Google Maps Directions
+Google Maps Photo Meta
+Google Maps Photos
+Google Maps Posts
+Google Maps Reviews
+Google News
+Google News Light
+Google Patents
+Google Patents Details
+Google Play
+Google Play Books
+Google Play Games
+Google Play Movies
+Google Play Product
+Google Related Questions
+Google Reverse Image
+Google Scholar
+Google Scholar Author
+Google Scholar Cite
+Google Scholar Profiles
+Google Shopping
+Google Shopping Filters
+Google Shopping Light
+Google Short Videos
+Google Travel Explore
+Google Trends
+Google Trends Autocomplete
+Google Trends News
+Google Trends Trending Now
+Google Videos
+Google Videos Light
+Home Depot
+Home Depot Product
+Home Depot Product Reviews
+Naver
+Open Table Reviews
+Tripadvisor
+Tripadvisor Place
+Walmart
+Walmart Product
+Walmart Product Reviews
+Walmart Product Sellers
+Yahoo
+Yahoo Images
+Yahoo Shopping
+Yahoo Videos
+Yandex
+Yandex Images
+Yandex Videos
+Yelp
+Yelp Place
+Yelp Reviews
+Youtube
+Youtube Video
+Youtube Video Transcript
+Average success rate:
+99.771%
+Average response time:
+1.95s
+Sub-link: https://serpapi.com/google-languages
+(https://serpapi.com/google-languages)
+Google HL Parameter: Supported Google Languages - SerpApi
+Google HL Parameter: Supported Google Languages
+Download the full
+JSON
+list of
+supported Google Languages:
+Download
+hl
+Language
+Example
+af
+Afrikaans
+https://serpapi.com/search?q=Coffee&hl=af (https://serpapi.com/search?q=Coffee&hl=af)
+ak
+Akan
+https://serpapi.com/search?q=Coffee&hl=ak (https://serpapi.com/search?q=Coffee&hl=ak)
+sq
+Albanian
+https://serpapi.com/search?q=Coffee&hl=sq (https://serpapi.com/search?q=Coffee&hl=sq)
+ws
+Samoa
+https://serpapi.com/search?q=Coffee&hl=ws (https://serpapi.com/search?q=Coffee&hl=ws)
+am
+Amharic
+https://serpapi.com/search?q=Coffee&hl=am (https://serpapi.com/search?q=Coffee&hl=am)
+ar
+Arabic
+https://serpapi.com/search?q=Coffee&hl=ar (https://serpapi.com/search?q=Coffee&hl=ar)
+hy
+Armenian
+https://serpapi.com/search?q=Coffee&hl=hy (https://serpapi.com/search?q=Coffee&hl=hy)
+az
+Azerbaijani
+https://serpapi.com/search?q=Coffee&hl=az (https://serpapi.com/search?q=Coffee&hl=az)
+eu
+Basque
+https://serpapi.com/search?q=Coffee&hl=eu (https://serpapi.com/search?q=Coffee&hl=eu)
+be
+Belarusian
+https://serpapi.com/search?q=Coffee&hl=be (https://serpapi.com/search?q=Coffee&hl=be)
+bem
+Bemba
+https://serpapi.com/search?q=Coffee&hl=bem (https://serpapi.com/search?q=Coffee&hl=bem)
+bn
+Bengali
+https://serpapi.com/search?q=Coffee&hl=bn (https://serpapi.com/search?q=Coffee&hl=bn)
+bh
+Bihari
+https://serpapi.com/search?q=Coffee&hl=bh (https://serpapi.com/search?q=Coffee&hl=bh)
+xx-bork
+Bork, bork, bork!
+https://serpapi.com/search?q=Coffee&hl=xx-bork (https://serpapi.com/search?q=Coffee&hl=xx-bork)
+bs
+Bosnian
+https://serpapi.com/search?q=Coffee&hl=bs (https://serpapi.com/search?q=Coffee&hl=bs)
+br
+Breton
+https://serpapi.com/search?q=Coffee&hl=br (https://serpapi.com/search?q=Coffee&hl=br)
+bg
+Bulgarian
+https://serpapi.com/search?q=Coffee&hl=bg (https://serpapi.com/search?q=Coffee&hl=bg)
+bt
+Bhutanese
+https://serpapi.com/search?q=Coffee&hl=bt (https://serpapi.com/search?q=Coffee&hl=bt)
+km
+Cambodian
+https://serpapi.com/search?q=Coffee&hl=km (https://serpapi.com/search?q=Coffee&hl=km)
+ca
+Catalan
+https://serpapi.com/search?q=Coffee&hl=ca (https://serpapi.com/search?q=Coffee&hl=ca)
+chr
+Cherokee
+https://serpapi.com/search?q=Coffee&hl=chr (https://serpapi.com/search?q=Coffee&hl=chr)
+ny
+Chichewa
+https://serpapi.com/search?q=Coffee&hl=ny (https://serpapi.com/search?q=Coffee&hl=ny)
+zh-cn
+Chinese (Simplified)
+https://serpapi.com/search?q=Coffee&hl=zh-cn (https://serpapi.com/search?q=Coffee&hl=zh-cn)
+zh-tw
+Chinese (Traditional)
+https://serpapi.com/search?q=Coffee&hl=zh-tw (https://serpapi.com/search?q=Coffee&hl=zh-tw)
+co
+Corsican
+https://serpapi.com/search?q=Coffee&hl=co (https://serpapi.com/search?q=Coffee&hl=co)
+hr
+Croatian
+https://serpapi.com/search?q=Coffee&hl=hr (https://serpapi.com/search?q=Coffee&hl=hr)
+cs
+Czech
+https://serpapi.com/search?q=Coffee&hl=cs (https://serpapi.com/search?q=Coffee&hl=cs)
+da
+Danish
+https://serpapi.com/search?q=Coffee&hl=da (https://serpapi.com/search?q=Coffee&hl=da)
+nl
+Dutch
+https://serpapi.com/search?q=Coffee&hl=nl (https://serpapi.com/search?q=Coffee&hl=nl)
+xx-elmer
+Elmer Fudd
+https://serpapi.com/search?q=Coffee&hl=xx-elmer (https://serpapi.com/search?q=Coffee&hl=xx-elmer)
+en
+English
+https://serpapi.com/search?q=Coffee&hl=en (https://serpapi.com/search?q=Coffee&hl=en)
+eo
+Esperanto
+https://serpapi.com/search?q=Coffee&hl=eo (https://serpapi.com/search?q=Coffee&hl=eo)
+et
+Estonian
+https://serpapi.com/search?q=Coffee&hl=et (https://serpapi.com/search?q=Coffee&hl=et)
+ee
+Ewe
+https://serpapi.com/search?q=Coffee&hl=ee (https://serpapi.com/search?q=Coffee&hl=ee)
+fo
+Faroese
+https://serpapi.com/search?q=Coffee&hl=fo (https://serpapi.com/search?q=Coffee&hl=fo)
+tl
+Filipino
+https://serpapi.com/search?q=Coffee&hl=tl (https://serpapi.com/search?q=Coffee&hl=tl)
+fi
+Finnish
+https://serpapi.com/search?q=Coffee&hl=fi (https://serpapi.com/search?q=Coffee&hl=fi)
+fr
+French
+https://serpapi.com/search?q=Coffee&hl=fr (https://serpapi.com/search?q=Coffee&hl=fr)
+fy
+Frisian
+https://serpapi.com/search?q=Coffee&hl=fy (https://serpapi.com/search?q=Coffee&hl=fy)
+gaa
+Ga
+https://serpapi.com/search?q=Coffee&hl=gaa (https://serpapi.com/search?q=Coffee&hl=gaa)
+gl
+Galician
+https://serpapi.com/search?q=Coffee&hl=gl (https://serpapi.com/search?q=Coffee&hl=gl)
+ka
+Georgian
+https://serpapi.com/search?q=Coffee&hl=ka (https://serpapi.com/search?q=Coffee&hl=ka)
+de
+German
+https://serpapi.com/search?q=Coffee&hl=de (https://serpapi.com/search?q=Coffee&hl=de)
+el
+Greek
+https://serpapi.com/search?q=Coffee&hl=el (https://serpapi.com/search?q=Coffee&hl=el)
+kl
+Greenlandic
+https://serpapi.com/search?q=Coffee&hl=kl (https://serpapi.com/search?q=Coffee&hl=kl)
+gn
+Guarani
+https://serpapi.com/search?q=Coffee&hl=gn (https://serpapi.com/search?q=Coffee&hl=gn)
+gu
+Gujarati
+https://serpapi.com/search?q=Coffee&hl=gu (https://serpapi.com/search?q=Coffee&hl=gu)
+xx-hacker
+Hacker
+https://serpapi.com/search?q=Coffee&hl=xx-hacker (https://serpapi.com/search?q=Coffee&hl=xx-hacker)
+ht
+Haitian Creole
+https://serpapi.com/search?q=Coffee&hl=ht (https://serpapi.com/search?q=Coffee&hl=ht)
+ha
+Hausa
+https://serpapi.com/search?q=Coffee&hl=ha (https://serpapi.com/search?q=Coffee&hl=ha)
+haw
+Hawaiian
+https://serpapi.com/search?q=Coffee&hl=haw (https://serpapi.com/search?q=Coffee&hl=haw)
+iw
+Hebrew
+https://serpapi.com/search?q=Coffee&hl=iw (https://serpapi.com/search?q=Coffee&hl=iw)
+he
+Hebrew
+https://serpapi.com/search?q=Coffee&hl=he (https://serpapi.com/search?q=Coffee&hl=he)
+hi
+Hindi
+https://serpapi.com/search?q=Coffee&hl=hi (https://serpapi.com/search?q=Coffee&hl=hi)
+hu
+Hungarian
+https://serpapi.com/search?q=Coffee&hl=hu (https://serpapi.com/search?q=Coffee&hl=hu)
+is
+Icelandic
+https://serpapi.com/search?q=Coffee&hl=is (https://serpapi.com/search?q=Coffee&hl=is)
+ig
+Igbo
+https://serpapi.com/search?q=Coffee&hl=ig (https://serpapi.com/search?q=Coffee&hl=ig)
+id
+Indonesian
+https://serpapi.com/search?q=Coffee&hl=id (https://serpapi.com/search?q=Coffee&hl=id)
+ia
+Interlingua
+https://serpapi.com/search?q=Coffee&hl=ia (https://serpapi.com/search?q=Coffee&hl=ia)
+ga
+Irish
+https://serpapi.com/search?q=Coffee&hl=ga (https://serpapi.com/search?q=Coffee&hl=ga)
+it
+Italian
+https://serpapi.com/search?q=Coffee&hl=it (https://serpapi.com/search?q=Coffee&hl=it)
+ja
+Japanese
+https://serpapi.com/search?q=Coffee&hl=ja (https://serpapi.com/search?q=Coffee&hl=ja)
+jw
+Javanese
+https://serpapi.com/search?q=Coffee&hl=jw (https://serpapi.com/search?q=Coffee&hl=jw)
+kn
+Kannada
+https://serpapi.com/search?q=Coffee&hl=kn (https://serpapi.com/search?q=Coffee&hl=kn)
+kk
+Kazakh
+https://serpapi.com/search?q=Coffee&hl=kk (https://serpapi.com/search?q=Coffee&hl=kk)
+rw
+Kinyarwanda
+https://serpapi.com/search?q=Coffee&hl=rw (https://serpapi.com/search?q=Coffee&hl=rw)
+rn
+Kirundi
+https://serpapi.com/search?q=Coffee&hl=rn (https://serpapi.com/search?q=Coffee&hl=rn)
+xx-klingon
+Klingon
+https://serpapi.com/search?q=Coffee&hl=xx-klingon (https://serpapi.com/search?q=Coffee&hl=xx-klingon)
+kg
+Kongo
+https://serpapi.com/search?q=Coffee&hl=kg (https://serpapi.com/search?q=Coffee&hl=kg)
+ko
+Korean
+https://serpapi.com/search?q=Coffee&hl=ko (https://serpapi.com/search?q=Coffee&hl=ko)
+kri
+Krio (Sierra Leone)
+https://serpapi.com/search?q=Coffee&hl=kri (https://serpapi.com/search?q=Coffee&hl=kri)
+ku
+Kurdish
+https://serpapi.com/search?q=Coffee&hl=ku (https://serpapi.com/search?q=Coffee&hl=ku)
+ckb
+Kurdish (Soranî)
+https://serpapi.com/search?q=Coffee&hl=ckb (https://serpapi.com/search?q=Coffee&hl=ckb)
+ky
+Kyrgyz
+https://serpapi.com/search?q=Coffee&hl=ky (https://serpapi.com/search?q=Coffee&hl=ky)
+lo
+Laothian
+https://serpapi.com/search?q=Coffee&hl=lo (https://serpapi.com/search?q=Coffee&hl=lo)
+la
+Latin
+https://serpapi.com/search?q=Coffee&hl=la (https://serpapi.com/search?q=Coffee&hl=la)
+lv
+Latvian
+https://serpapi.com/search?q=Coffee&hl=lv (https://serpapi.com/search?q=Coffee&hl=lv)
+ln
+Lingala
+https://serpapi.com/search?q=Coffee&hl=ln (https://serpapi.com/search?q=Coffee&hl=ln)
+lt
+Lithuanian
+https://serpapi.com/search?q=Coffee&hl=lt (https://serpapi.com/search?q=Coffee&hl=lt)
+loz
+Lozi
+https://serpapi.com/search?q=Coffee&hl=loz (https://serpapi.com/search?q=Coffee&hl=loz)
+lg
+Luganda
+https://serpapi.com/search?q=Coffee&hl=lg (https://serpapi.com/search?q=Coffee&hl=lg)
+ach
+Luo
+https://serpapi.com/search?q=Coffee&hl=ach (https://serpapi.com/search?q=Coffee&hl=ach)
+mk
+Macedonian
+https://serpapi.com/search?q=Coffee&hl=mk (https://serpapi.com/search?q=Coffee&hl=mk)
+mg
+Malagasy
+https://serpapi.com/search?q=Coffee&hl=mg (https://serpapi.com/search?q=Coffee&hl=mg)
+ms
+Malay
+https://serpapi.com/search?q=Coffee&hl=ms (https://serpapi.com/search?q=Coffee&hl=ms)
+ml
+Malayalam
+https://serpapi.com/search?q=Coffee&hl=ml (https://serpapi.com/search?q=Coffee&hl=ml)
+mt
+Maltese
+https://serpapi.com/search?q=Coffee&hl=mt (https://serpapi.com/search?q=Coffee&hl=mt)
+mv
+Maldives
+https://serpapi.com/search?q=Coffee&hl=mv (https://serpapi.com/search?q=Coffee&hl=mv)
+mi
+Maori
+https://serpapi.com/search?q=Coffee&hl=mi (https://serpapi.com/search?q=Coffee&hl=mi)
+mr
+Marathi
+https://serpapi.com/search?q=Coffee&hl=mr (https://serpapi.com/search?q=Coffee&hl=mr)
+mfe
+Mauritian Creole
+https://serpapi.com/search?q=Coffee&hl=mfe (https://serpapi.com/search?q=Coffee&hl=mfe)
+mo
+Moldavian
+https://serpapi.com/search?q=Coffee&hl=mo (https://serpapi.com/search?q=Coffee&hl=mo)
+mn
+Mongolian
+https://serpapi.com/search?q=Coffee&hl=mn (https://serpapi.com/search?q=Coffee&hl=mn)
+sr-me
+Montenegrin
+https://serpapi.com/search?q=Coffee&hl=sr-me (https://serpapi.com/search?q=Coffee&hl=sr-me)
+my
+Myanmar
+https://serpapi.com/search?q=Coffee&hl=my (https://serpapi.com/search?q=Coffee&hl=my)
+ne
+Nepali
+https://serpapi.com/search?q=Coffee&hl=ne (https://serpapi.com/search?q=Coffee&hl=ne)
+pcm
+Nigerian Pidgin
+https://serpapi.com/search?q=Coffee&hl=pcm (https://serpapi.com/search?q=Coffee&hl=pcm)
+nso
+Northern Sotho
+https://serpapi.com/search?q=Coffee&hl=nso (https://serpapi.com/search?q=Coffee&hl=nso)
+no
+Norwegian
+https://serpapi.com/search?q=Coffee&hl=no (https://serpapi.com/search?q=Coffee&hl=no)
+nn
+Norwegian (Nynorsk)
+https://serpapi.com/search?q=Coffee&hl=nn (https://serpapi.com/search?q=Coffee&hl=nn)
+oc
+Occitan
+https://serpapi.com/search?q=Coffee&hl=oc (https://serpapi.com/search?q=Coffee&hl=oc)
+or
+Oriya
+https://serpapi.com/search?q=Coffee&hl=or (https://serpapi.com/search?q=Coffee&hl=or)
+om
+Oromo
+https://serpapi.com/search?q=Coffee&hl=om (https://serpapi.com/search?q=Coffee&hl=om)
+ps
+Pashto
+https://serpapi.com/search?q=Coffee&hl=ps (https://serpapi.com/search?q=Coffee&hl=ps)
+fa
+Persian
+https://serpapi.com/search?q=Coffee&hl=fa (https://serpapi.com/search?q=Coffee&hl=fa)
+xx-pirate
+Pirate
+https://serpapi.com/search?q=Coffee&hl=xx-pirate (https://serpapi.com/search?q=Coffee&hl=xx-pirate)
+pl
+Polish
+https://serpapi.com/search?q=Coffee&hl=pl (https://serpapi.com/search?q=Coffee&hl=pl)
+pt
+Portuguese
+https://serpapi.com/search?q=Coffee&hl=pt (https://serpapi.com/search?q=Coffee&hl=pt)
+pt-br
+Portuguese (Brazil)
+https://serpapi.com/search?q=Coffee&hl=pt-br (https://serpapi.com/search?q=Coffee&hl=pt-br)
+pt-pt
+Portuguese (Portugal)
+https://serpapi.com/search?q=Coffee&hl=pt-pt (https://serpapi.com/search?q=Coffee&hl=pt-pt)
+pa
+Punjabi
+https://serpapi.com/search?q=Coffee&hl=pa (https://serpapi.com/search?q=Coffee&hl=pa)
+qu
+Quechua
+https://serpapi.com/search?q=Coffee&hl=qu (https://serpapi.com/search?q=Coffee&hl=qu)
+ro
+Romanian
+https://serpapi.com/search?q=Coffee&hl=ro (https://serpapi.com/search?q=Coffee&hl=ro)
+rm
+Romansh
+https://serpapi.com/search?q=Coffee&hl=rm (https://serpapi.com/search?q=Coffee&hl=rm)
+nyn
+Runyakitara
+https://serpapi.com/search?q=Coffee&hl=nyn (https://serpapi.com/search?q=Coffee&hl=nyn)
+ru
+Russian
+https://serpapi.com/search?q=Coffee&hl=ru (https://serpapi.com/search?q=Coffee&hl=ru)
+gd
+Scots Gaelic
+https://serpapi.com/search?q=Coffee&hl=gd (https://serpapi.com/search?q=Coffee&hl=gd)
+sr
+Serbian
+https://serpapi.com/search?q=Coffee&hl=sr (https://serpapi.com/search?q=Coffee&hl=sr)
+sh
+Serbo-Croatian
+https://serpapi.com/search?q=Coffee&hl=sh (https://serpapi.com/search?q=Coffee&hl=sh)
+st
+Sesotho
+https://serpapi.com/search?q=Coffee&hl=st (https://serpapi.com/search?q=Coffee&hl=st)
+tn
+Setswana
+https://serpapi.com/search?q=Coffee&hl=tn (https://serpapi.com/search?q=Coffee&hl=tn)
+crs
+Seychellois Creole
+https://serpapi.com/search?q=Coffee&hl=crs (https://serpapi.com/search?q=Coffee&hl=crs)
+sn
+Shona
+https://serpapi.com/search?q=Coffee&hl=sn (https://serpapi.com/search?q=Coffee&hl=sn)
+sd
+Sindhi
+https://serpapi.com/search?q=Coffee&hl=sd (https://serpapi.com/search?q=Coffee&hl=sd)
+si
+Sinhalese
+https://serpapi.com/search?q=Coffee&hl=si (https://serpapi.com/search?q=Coffee&hl=si)
+sk
+Slovak
+https://serpapi.com/search?q=Coffee&hl=sk (https://serpapi.com/search?q=Coffee&hl=sk)
+sl
+Slovenian
+https://serpapi.com/search?q=Coffee&hl=sl (https://serpapi.com/search?q=Coffee&hl=sl)
+so
+Somali
+https://serpapi.com/search?q=Coffee&hl=so (https://serpapi.com/search?q=Coffee&hl=so)
+es
+Spanish
+https://serpapi.com/search?q=Coffee&hl=es (https://serpapi.com/search?q=Coffee&hl=es)
+es-419
+Spanish (Latin American)
+https://serpapi.com/search?q=Coffee&hl=es-419 (https://serpapi.com/search?q=Coffee&hl=es-419)
+su
+Sundanese
+https://serpapi.com/search?q=Coffee&hl=su (https://serpapi.com/search?q=Coffee&hl=su)
+sw
+Swahili
+https://serpapi.com/search?q=Coffee&hl=sw (https://serpapi.com/search?q=Coffee&hl=sw)
+sv
+Swedish
+https://serpapi.com/search?q=Coffee&hl=sv (https://serpapi.com/search?q=Coffee&hl=sv)
+tg
+Tajik
+https://serpapi.com/search?q=Coffee&hl=tg (https://serpapi.com/search?q=Coffee&hl=tg)
+ta
+Tamil
+https://serpapi.com/search?q=Coffee&hl=ta (https://serpapi.com/search?q=Coffee&hl=ta)
+tt
+Tatar
+https://serpapi.com/search?q=Coffee&hl=tt (https://serpapi.com/search?q=Coffee&hl=tt)
+te
+Telugu
+https://serpapi.com/search?q=Coffee&hl=te (https://serpapi.com/search?q=Coffee&hl=te)
+th
+Thai
+https://serpapi.com/search?q=Coffee&hl=th (https://serpapi.com/search?q=Coffee&hl=th)
+ti
+Tigrinya
+https://serpapi.com/search?q=Coffee&hl=ti (https://serpapi.com/search?q=Coffee&hl=ti)
+to
+Tonga
+https://serpapi.com/search?q=Coffee&hl=to (https://serpapi.com/search?q=Coffee&hl=to)
+lua
+Tshiluba
+https://serpapi.com/search?q=Coffee&hl=lua (https://serpapi.com/search?q=Coffee&hl=lua)
+tum
+Tumbuka
+https://serpapi.com/search?q=Coffee&hl=tum (https://serpapi.com/search?q=Coffee&hl=tum)
+tr
+Turkish
+https://serpapi.com/search?q=Coffee&hl=tr (https://serpapi.com/search?q=Coffee&hl=tr)
+tk
+Turkmen
+https://serpapi.com/search?q=Coffee&hl=tk (https://serpapi.com/search?q=Coffee&hl=tk)
+tw
+Twi
+https://serpapi.com/search?q=Coffee&hl=tw (https://serpapi.com/search?q=Coffee&hl=tw)
+ug
+Uighur
+https://serpapi.com/search?q=Coffee&hl=ug (https://serpapi.com/search?q=Coffee&hl=ug)
+uk
+Ukrainian
+https://serpapi.com/search?q=Coffee&hl=uk (https://serpapi.com/search?q=Coffee&hl=uk)
+ur
+Urdu
+https://serpapi.com/search?q=Coffee&hl=ur (https://serpapi.com/search?q=Coffee&hl=ur)
+uz
+Uzbek
+https://serpapi.com/search?q=Coffee&hl=uz (https://serpapi.com/search?q=Coffee&hl=uz)
+vu
+Vanuatu
+https://serpapi.com/search?q=Coffee&hl=vu (https://serpapi.com/search?q=Coffee&hl=vu)
+vi
+Vietnamese
+https://serpapi.com/search?q=Coffee&hl=vi (https://serpapi.com/search?q=Coffee&hl=vi)
+cy
+Welsh
+https://serpapi.com/search?q=Coffee&hl=cy (https://serpapi.com/search?q=Coffee&hl=cy)
+wo
+Wolof
+https://serpapi.com/search?q=Coffee&hl=wo (https://serpapi.com/search?q=Coffee&hl=wo)
+xh
+Xhosa
+https://serpapi.com/search?q=Coffee&hl=xh (https://serpapi.com/search?q=Coffee&hl=xh)
+yi
+Yiddish
+https://serpapi.com/search?q=Coffee&hl=yi (https://serpapi.com/search?q=Coffee&hl=yi)
+yo
+Yoruba
+https://serpapi.com/search?q=Coffee&hl=yo (https://serpapi.com/search?q=Coffee&hl=yo)
+zu
+Zulu
+https://serpapi.com/search?q=Coffee&hl=zu (https://serpapi.com/search?q=Coffee&hl=zu)
+Sub-link: https://serpapi.com/playground?
+engine=google_shopping (https://serpapi.com/playground?
+engine=google_shopping)
+SerpApi Playground - SerpApi
+SerpApi Playground
+x
+HTML URL:
+JSON URL:
+x
+x
+Google
+Search
+About This Result
+AI Mode
+AI Overview
+Autocomplete
+Events
+Forums
+Immersive Product
+Local
+Local Services
+News
+Related Questions
+Reverse Image
+Shopping
+Short Videos
+Travel Explore
+Videos
+Google Ads Transparency Center
+Search
+Ad Details
+Google Finance
+Search
+Markets
+Google Flights
+Flights
+Autocomplete
+Google Hotels
+Search
+Autocomplete
+Google Images
+Search
+Related Content
+Google Jobs
+Search
+Listing
+Google Lens
+Search
+Image Sources
+Google Light
+Search
+Images
+News
+Videos
+Google Maps
+Search
+Autocomplete
+Contributor Reviews
+Directions
+Photos
+Photo Meta
+Posts
+Reviews
+Google Patents
+Search
+Details
+Google Play
+Search
+Play Product
+Books Store
+Games Store
+Movies Store
+Google Shopping Light
+Shopping
+Filters
+Google Scholar
+Search
+Author
+Cite
+Google Trends
+Search
+Autocomplete
+News
+Trending Now
+Apple App Store
+Search
+Product
+Reviews
+Baidu
+Search
+News
+Bing
+Search
+Images
+Maps
+News
+Product
+Reverse Image
+Shopping
+Videos
+Copilot
+Amazon
+Search
+Amazon Product
+DuckDuckGo
+Search
+Maps
+News
+DuckDuckGo Light
+Search
+Ebay
+Search
+Product
+Facebook
+Profile
+Naver
+Search
+OpenTable
+Reviews
+The Home Depot
+Search
+Product
+Product Reviews
+Tripadvisor
+Search
+Place
+Walmart
+Search
+Product
+Product Sellers
+Product Reviews
+Yahoo!
+Search
+Images
+Shopping
+Videos
+Yandex
+Search
+Images
+Videos
+Yelp
+Search
+Place
+Reviews
+YouTube
+Search
+Video
+Video Transcript
+x
+Engine
+History
+Export To Code
+Sub-link: https://serpapi.com/google-domains
+(https://serpapi.com/google-domains)
+Supported Google Domains - SerpApi
+Supported Google Domains
+Download the full
+JSON
+list of
+supported Google Domains:
+Download
+google_domain
+Country
+Example
+google.ad
+Andorra
+https://serpapi.com/search?q=Coffee&google_domain=google.ad (https://serpapi.com/search?q=Coffee&google_domain=google.ad)
+google.ae
+United Arab Emirates
+https://serpapi.com/search?q=Coffee&google_domain=google.ae (https://serpapi.com/search?q=Coffee&google_domain=google.ae)
+google.al
+Albania
+https://serpapi.com/search?q=Coffee&google_domain=google.al (https://serpapi.com/search?q=Coffee&google_domain=google.al)
+google.am
+Armenia
+https://serpapi.com/search?q=Coffee&google_domain=google.am (https://serpapi.com/search?q=Coffee&google_domain=google.am)
+google.as
+American Samoa
+https://serpapi.com/search?q=Coffee&google_domain=google.as (https://serpapi.com/search?q=Coffee&google_domain=google.as)
+google.at
+Austria
+https://serpapi.com/search?q=Coffee&google_domain=google.at (https://serpapi.com/search?q=Coffee&google_domain=google.at)
+google.az
+Azerbaijan
+https://serpapi.com/search?q=Coffee&google_domain=google.az (https://serpapi.com/search?q=Coffee&google_domain=google.az)
+google.ba
+Bosnia and Herzegovina
+https://serpapi.com/search?q=Coffee&google_domain=google.ba (https://serpapi.com/search?q=Coffee&google_domain=google.ba)
+google.be
+Belgium
+https://serpapi.com/search?q=Coffee&google_domain=google.be (https://serpapi.com/search?q=Coffee&google_domain=google.be)
+google.bf
+Burkina Faso
+https://serpapi.com/search?q=Coffee&google_domain=google.bf (https://serpapi.com/search?q=Coffee&google_domain=google.bf)
+google.bg
+Bulgaria
+https://serpapi.com/search?q=Coffee&google_domain=google.bg (https://serpapi.com/search?q=Coffee&google_domain=google.bg)
+google.bi
+Burundi
+https://serpapi.com/search?q=Coffee&google_domain=google.bi (https://serpapi.com/search?q=Coffee&google_domain=google.bi)
+google.bj
+Benin
+https://serpapi.com/search?q=Coffee&google_domain=google.bj (https://serpapi.com/search?q=Coffee&google_domain=google.bj)
+google.bs
+Bahamas
+https://serpapi.com/search?q=Coffee&google_domain=google.bs (https://serpapi.com/search?q=Coffee&google_domain=google.bs)
+google.bt
+Bhutan
+https://serpapi.com/search?q=Coffee&google_domain=google.bt (https://serpapi.com/search?q=Coffee&google_domain=google.bt)
+google.by
+Belarus
+https://serpapi.com/search?q=Coffee&google_domain=google.by (https://serpapi.com/search?q=Coffee&google_domain=google.by)
+google.ca
+Canada
+https://serpapi.com/search?q=Coffee&google_domain=google.ca (https://serpapi.com/search?q=Coffee&google_domain=google.ca)
+google.cd
+Democratic Republic of the Congo
+https://serpapi.com/search?q=Coffee&google_domain=google.cd (https://serpapi.com/search?q=Coffee&google_domain=google.cd)
+google.cf
+Central African Republic
+https://serpapi.com/search?q=Coffee&google_domain=google.cf (https://serpapi.com/search?q=Coffee&google_domain=google.cf)
+google.cg
+Republic of the Congo
+https://serpapi.com/search?q=Coffee&google_domain=google.cg (https://serpapi.com/search?q=Coffee&google_domain=google.cg)
+google.ch
+Switzerland
+https://serpapi.com/search?q=Coffee&google_domain=google.ch (https://serpapi.com/search?q=Coffee&google_domain=google.ch)
+google.ci
+Ivory Coast
+https://serpapi.com/search?q=Coffee&google_domain=google.ci (https://serpapi.com/search?q=Coffee&google_domain=google.ci)
+google.cl
+Chile
+https://serpapi.com/search?q=Coffee&google_domain=google.cl (https://serpapi.com/search?q=Coffee&google_domain=google.cl)
+google.cm
+Cameroon
+https://serpapi.com/search?q=Coffee&google_domain=google.cm (https://serpapi.com/search?q=Coffee&google_domain=google.cm)
+google.co.ao
+Angola
+https://serpapi.com/search?q=Coffee&google_domain=google.co.ao (https://serpapi.com/search?q=Coffee&google_domain=google.co.ao)
+google.co.bw
+Botswana
+https://serpapi.com/search?q=Coffee&google_domain=google.co.bw (https://serpapi.com/search?q=Coffee&google_domain=google.co.bw)
+google.co.ck
+Cook Islands
+https://serpapi.com/search?q=Coffee&google_domain=google.co.ck (https://serpapi.com/search?q=Coffee&google_domain=google.co.ck)
+google.co.cr
+Costa Rica
+https://serpapi.com/search?q=Coffee&google_domain=google.co.cr (https://serpapi.com/search?q=Coffee&google_domain=google.co.cr)
+google.co.id
+Indonesia
+https://serpapi.com/search?q=Coffee&google_domain=google.co.id (https://serpapi.com/search?q=Coffee&google_domain=google.co.id)
+google.co.il
+Israel
+https://serpapi.com/search?q=Coffee&google_domain=google.co.il (https://serpapi.com/search?q=Coffee&google_domain=google.co.il)
+google.co.in
+India
+https://serpapi.com/search?q=Coffee&google_domain=google.co.in (https://serpapi.com/search?q=Coffee&google_domain=google.co.in)
+google.co.jp
+Japan
+https://serpapi.com/search?q=Coffee&google_domain=google.co.jp (https://serpapi.com/search?q=Coffee&google_domain=google.co.jp)
+google.co.ke
+Kenya
+https://serpapi.com/search?q=Coffee&google_domain=google.co.ke (https://serpapi.com/search?q=Coffee&google_domain=google.co.ke)
+google.co.kr
+South Korea
+https://serpapi.com/search?q=Coffee&google_domain=google.co.kr (https://serpapi.com/search?q=Coffee&google_domain=google.co.kr)
+google.co.ls
+Lesotho
+https://serpapi.com/search?q=Coffee&google_domain=google.co.ls (https://serpapi.com/search?q=Coffee&google_domain=google.co.ls)
+google.co.ma
+Morocco
+https://serpapi.com/search?q=Coffee&google_domain=google.co.ma (https://serpapi.com/search?q=Coffee&google_domain=google.co.ma)
+google.co.mz
+Mozambique
+https://serpapi.com/search?q=Coffee&google_domain=google.co.mz (https://serpapi.com/search?q=Coffee&google_domain=google.co.mz)
+google.co.nz
+New Zealand
+https://serpapi.com/search?q=Coffee&google_domain=google.co.nz (https://serpapi.com/search?q=Coffee&google_domain=google.co.nz)
+google.co.th
+Thailand
+https://serpapi.com/search?q=Coffee&google_domain=google.co.th (https://serpapi.com/search?q=Coffee&google_domain=google.co.th)
+google.co.tz
+Tanzania
+https://serpapi.com/search?q=Coffee&google_domain=google.co.tz (https://serpapi.com/search?q=Coffee&google_domain=google.co.tz)
+google.co.ug
+Uganda
+https://serpapi.com/search?q=Coffee&google_domain=google.co.ug (https://serpapi.com/search?q=Coffee&google_domain=google.co.ug)
+google.co.uk
+United Kingdom
+https://serpapi.com/search?q=Coffee&google_domain=google.co.uk (https://serpapi.com/search?q=Coffee&google_domain=google.co.uk)
+google.co.uz
+Uzbekistan
+https://serpapi.com/search?q=Coffee&google_domain=google.co.uz (https://serpapi.com/search?q=Coffee&google_domain=google.co.uz)
+google.co.ve
+Venezuela
+https://serpapi.com/search?q=Coffee&google_domain=google.co.ve (https://serpapi.com/search?q=Coffee&google_domain=google.co.ve)
+google.co.vi
+United States Virgin Islands
+https://serpapi.com/search?q=Coffee&google_domain=google.co.vi (https://serpapi.com/search?q=Coffee&google_domain=google.co.vi)
+google.co.za
+South Africa
+https://serpapi.com/search?q=Coffee&google_domain=google.co.za (https://serpapi.com/search?q=Coffee&google_domain=google.co.za)
+google.co.zm
+Zambia
+https://serpapi.com/search?q=Coffee&google_domain=google.co.zm (https://serpapi.com/search?q=Coffee&google_domain=google.co.zm)
+google.co.zw
+Zimbabwe
+https://serpapi.com/search?q=Coffee&google_domain=google.co.zw (https://serpapi.com/search?q=Coffee&google_domain=google.co.zw)
+google.com
+United States
+https://serpapi.com/search?q=Coffee&google_domain=google.com (https://serpapi.com/search?q=Coffee&google_domain=google.com)
+google.com.af
+Afghanistan
+https://serpapi.com/search?q=Coffee&google_domain=google.com.af (https://serpapi.com/search?q=Coffee&google_domain=google.com.af)
+google.com.ag
+Antigua and Barbuda
+https://serpapi.com/search?q=Coffee&google_domain=google.com.ag (https://serpapi.com/search?q=Coffee&google_domain=google.com.ag)
+google.com.ai
+Anguilla
+https://serpapi.com/search?q=Coffee&google_domain=google.com.ai (https://serpapi.com/search?q=Coffee&google_domain=google.com.ai)
+google.com.ar
+Argentina
+https://serpapi.com/search?q=Coffee&google_domain=google.com.ar (https://serpapi.com/search?q=Coffee&google_domain=google.com.ar)
+google.com.au
+Australia
+https://serpapi.com/search?q=Coffee&google_domain=google.com.au (https://serpapi.com/search?q=Coffee&google_domain=google.com.au)
+google.com.bd
+Bangladesh
+https://serpapi.com/search?q=Coffee&google_domain=google.com.bd (https://serpapi.com/search?q=Coffee&google_domain=google.com.bd)
+google.com.bh
+Bahrain
+https://serpapi.com/search?q=Coffee&google_domain=google.com.bh (https://serpapi.com/search?q=Coffee&google_domain=google.com.bh)
+google.com.bn
+Brunei
+https://serpapi.com/search?q=Coffee&google_domain=google.com.bn (https://serpapi.com/search?q=Coffee&google_domain=google.com.bn)
+google.com.bo
+Bolivia
+https://serpapi.com/search?q=Coffee&google_domain=google.com.bo (https://serpapi.com/search?q=Coffee&google_domain=google.com.bo)
+google.com.br
+Brazil
+https://serpapi.com/search?q=Coffee&google_domain=google.com.br (https://serpapi.com/search?q=Coffee&google_domain=google.com.br)
+google.com.bz
+Belize
+https://serpapi.com/search?q=Coffee&google_domain=google.com.bz (https://serpapi.com/search?q=Coffee&google_domain=google.com.bz)
+google.com.co
+Colombia
+https://serpapi.com/search?q=Coffee&google_domain=google.com.co (https://serpapi.com/search?q=Coffee&google_domain=google.com.co)
+google.com.cu
+Cuba
+https://serpapi.com/search?q=Coffee&google_domain=google.com.cu (https://serpapi.com/search?q=Coffee&google_domain=google.com.cu)
+google.com.cy
+Cyprus
+https://serpapi.com/search?q=Coffee&google_domain=google.com.cy (https://serpapi.com/search?q=Coffee&google_domain=google.com.cy)
+google.com.do
+Dominican Republic
+https://serpapi.com/search?q=Coffee&google_domain=google.com.do (https://serpapi.com/search?q=Coffee&google_domain=google.com.do)
+google.com.ec
+Ecuador
+https://serpapi.com/search?q=Coffee&google_domain=google.com.ec (https://serpapi.com/search?q=Coffee&google_domain=google.com.ec)
+google.com.eg
+Egypt
+https://serpapi.com/search?q=Coffee&google_domain=google.com.eg (https://serpapi.com/search?q=Coffee&google_domain=google.com.eg)
+google.com.et
+Ethiopia
+https://serpapi.com/search?q=Coffee&google_domain=google.com.et (https://serpapi.com/search?q=Coffee&google_domain=google.com.et)
+google.com.fj
+Fiji
+https://serpapi.com/search?q=Coffee&google_domain=google.com.fj (https://serpapi.com/search?q=Coffee&google_domain=google.com.fj)
+google.com.gh
+Ghana
+https://serpapi.com/search?q=Coffee&google_domain=google.com.gh (https://serpapi.com/search?q=Coffee&google_domain=google.com.gh)
+google.com.gi
+Gibraltar
+https://serpapi.com/search?q=Coffee&google_domain=google.com.gi (https://serpapi.com/search?q=Coffee&google_domain=google.com.gi)
+google.com.gt
+Guatemala
+https://serpapi.com/search?q=Coffee&google_domain=google.com.gt (https://serpapi.com/search?q=Coffee&google_domain=google.com.gt)
+google.com.hk
+Hong Kong
+https://serpapi.com/search?q=Coffee&google_domain=google.com.hk (https://serpapi.com/search?q=Coffee&google_domain=google.com.hk)
+google.com.jm
+Jamaica
+https://serpapi.com/search?q=Coffee&google_domain=google.com.jm (https://serpapi.com/search?q=Coffee&google_domain=google.com.jm)
+google.com.kh
+Cambodia
+https://serpapi.com/search?q=Coffee&google_domain=google.com.kh (https://serpapi.com/search?q=Coffee&google_domain=google.com.kh)
+google.com.kw
+Kuwait
+https://serpapi.com/search?q=Coffee&google_domain=google.com.kw (https://serpapi.com/search?q=Coffee&google_domain=google.com.kw)
+google.com.lb
+Lebanon
+https://serpapi.com/search?q=Coffee&google_domain=google.com.lb (https://serpapi.com/search?q=Coffee&google_domain=google.com.lb)
+google.com.ly
+Libya
+https://serpapi.com/search?q=Coffee&google_domain=google.com.ly (https://serpapi.com/search?q=Coffee&google_domain=google.com.ly)
+google.com.mm
+Myanmar
+https://serpapi.com/search?q=Coffee&google_domain=google.com.mm (https://serpapi.com/search?q=Coffee&google_domain=google.com.mm)
+google.com.mt
+Malta
+https://serpapi.com/search?q=Coffee&google_domain=google.com.mt (https://serpapi.com/search?q=Coffee&google_domain=google.com.mt)
+google.com.mx
+Mexico
+https://serpapi.com/search?q=Coffee&google_domain=google.com.mx (https://serpapi.com/search?q=Coffee&google_domain=google.com.mx)
+google.com.my
+Malaysia
+https://serpapi.com/search?q=Coffee&google_domain=google.com.my (https://serpapi.com/search?q=Coffee&google_domain=google.com.my)
+google.com.na
+Namibia
+https://serpapi.com/search?q=Coffee&google_domain=google.com.na (https://serpapi.com/search?q=Coffee&google_domain=google.com.na)
+google.com.ng
+Nigeria
+https://serpapi.com/search?q=Coffee&google_domain=google.com.ng (https://serpapi.com/search?q=Coffee&google_domain=google.com.ng)
+google.com.ni
+Nicaragua
+https://serpapi.com/search?q=Coffee&google_domain=google.com.ni (https://serpapi.com/search?q=Coffee&google_domain=google.com.ni)
+google.com.np
+Nepal
+https://serpapi.com/search?q=Coffee&google_domain=google.com.np (https://serpapi.com/search?q=Coffee&google_domain=google.com.np)
+google.com.om
+Oman
+https://serpapi.com/search?q=Coffee&google_domain=google.com.om (https://serpapi.com/search?q=Coffee&google_domain=google.com.om)
+google.com.pa
+Panama
+https://serpapi.com/search?q=Coffee&google_domain=google.com.pa (https://serpapi.com/search?q=Coffee&google_domain=google.com.pa)
+google.com.pe
+Peru
+https://serpapi.com/search?q=Coffee&google_domain=google.com.pe (https://serpapi.com/search?q=Coffee&google_domain=google.com.pe)
+google.com.pg
+Papua New Guinea
+https://serpapi.com/search?q=Coffee&google_domain=google.com.pg (https://serpapi.com/search?q=Coffee&google_domain=google.com.pg)
+google.com.ph
+Philippines
+https://serpapi.com/search?q=Coffee&google_domain=google.com.ph (https://serpapi.com/search?q=Coffee&google_domain=google.com.ph)
+google.com.pk
+Pakistan
+https://serpapi.com/search?q=Coffee&google_domain=google.com.pk (https://serpapi.com/search?q=Coffee&google_domain=google.com.pk)
+google.com.pr
+Puerto Rico
+https://serpapi.com/search?q=Coffee&google_domain=google.com.pr (https://serpapi.com/search?q=Coffee&google_domain=google.com.pr)
+google.com.py
+Paraguay
+https://serpapi.com/search?q=Coffee&google_domain=google.com.py (https://serpapi.com/search?q=Coffee&google_domain=google.com.py)
+google.com.qa
+Qatar
+https://serpapi.com/search?q=Coffee&google_domain=google.com.qa (https://serpapi.com/search?q=Coffee&google_domain=google.com.qa)
+google.com.sa
+Saudi Arabia
+https://serpapi.com/search?q=Coffee&google_domain=google.com.sa (https://serpapi.com/search?q=Coffee&google_domain=google.com.sa)
+google.com.sb
+Solomon Islands
+https://serpapi.com/search?q=Coffee&google_domain=google.com.sb (https://serpapi.com/search?q=Coffee&google_domain=google.com.sb)
+google.com.sg
+Singapore
+https://serpapi.com/search?q=Coffee&google_domain=google.com.sg (https://serpapi.com/search?q=Coffee&google_domain=google.com.sg)
+google.com.sl
+Sierra Leone
+https://serpapi.com/search?q=Coffee&google_domain=google.com.sl (https://serpapi.com/search?q=Coffee&google_domain=google.com.sl)
+google.com.sv
+El Salvador
+https://serpapi.com/search?q=Coffee&google_domain=google.com.sv (https://serpapi.com/search?q=Coffee&google_domain=google.com.sv)
+google.com.tj
+Tajikistan
+https://serpapi.com/search?q=Coffee&google_domain=google.com.tj (https://serpapi.com/search?q=Coffee&google_domain=google.com.tj)
+google.com.tr
+Turkiye
+https://serpapi.com/search?q=Coffee&google_domain=google.com.tr (https://serpapi.com/search?q=Coffee&google_domain=google.com.tr)
+google.com.tr
+Turkey
+https://serpapi.com/search?q=Coffee&google_domain=google.com.tr (https://serpapi.com/search?q=Coffee&google_domain=google.com.tr)
+google.com.tw
+Taiwan
+https://serpapi.com/search?q=Coffee&google_domain=google.com.tw (https://serpapi.com/search?q=Coffee&google_domain=google.com.tw)
+google.com.ua
+Ukraine
+https://serpapi.com/search?q=Coffee&google_domain=google.com.ua (https://serpapi.com/search?q=Coffee&google_domain=google.com.ua)
+google.com.uy
+Uruguay
+https://serpapi.com/search?q=Coffee&google_domain=google.com.uy (https://serpapi.com/search?q=Coffee&google_domain=google.com.uy)
+google.com.vc
+Saint Vincent and the Grenadines
+https://serpapi.com/search?q=Coffee&google_domain=google.com.vc (https://serpapi.com/search?q=Coffee&google_domain=google.com.vc)
+google.com.vn
+Vietnam
+https://serpapi.com/search?q=Coffee&google_domain=google.com.vn (https://serpapi.com/search?q=Coffee&google_domain=google.com.vn)
+google.cv
+Cape Verde
+https://serpapi.com/search?q=Coffee&google_domain=google.cv (https://serpapi.com/search?q=Coffee&google_domain=google.cv)
+google.cz
+Czech Republic
+https://serpapi.com/search?q=Coffee&google_domain=google.cz (https://serpapi.com/search?q=Coffee&google_domain=google.cz)
+google.de
+Germany
+https://serpapi.com/search?q=Coffee&google_domain=google.de (https://serpapi.com/search?q=Coffee&google_domain=google.de)
+google.dj
+Djibouti
+https://serpapi.com/search?q=Coffee&google_domain=google.dj (https://serpapi.com/search?q=Coffee&google_domain=google.dj)
+google.dk
+Denmark
+https://serpapi.com/search?q=Coffee&google_domain=google.dk (https://serpapi.com/search?q=Coffee&google_domain=google.dk)
+google.dm
+Dominica
+https://serpapi.com/search?q=Coffee&google_domain=google.dm (https://serpapi.com/search?q=Coffee&google_domain=google.dm)
+google.dz
+Algeria
+https://serpapi.com/search?q=Coffee&google_domain=google.dz (https://serpapi.com/search?q=Coffee&google_domain=google.dz)
+google.ee
+Estonia
+https://serpapi.com/search?q=Coffee&google_domain=google.ee (https://serpapi.com/search?q=Coffee&google_domain=google.ee)
+google.es
+Spain
+https://serpapi.com/search?q=Coffee&google_domain=google.es (https://serpapi.com/search?q=Coffee&google_domain=google.es)
+google.fi
+Finland
+https://serpapi.com/search?q=Coffee&google_domain=google.fi (https://serpapi.com/search?q=Coffee&google_domain=google.fi)
+google.fm
+Micronesia, Federated States of
+https://serpapi.com/search?q=Coffee&google_domain=google.fm (https://serpapi.com/search?q=Coffee&google_domain=google.fm)
+google.fr
+France
+https://serpapi.com/search?q=Coffee&google_domain=google.fr (https://serpapi.com/search?q=Coffee&google_domain=google.fr)
+google.ga
+Gabon
+https://serpapi.com/search?q=Coffee&google_domain=google.ga (https://serpapi.com/search?q=Coffee&google_domain=google.ga)
+google.ge
+Georgia
+https://serpapi.com/search?q=Coffee&google_domain=google.ge (https://serpapi.com/search?q=Coffee&google_domain=google.ge)
+google.gl
+Greenland
+https://serpapi.com/search?q=Coffee&google_domain=google.gl (https://serpapi.com/search?q=Coffee&google_domain=google.gl)
+google.gm
+Gambia
+https://serpapi.com/search?q=Coffee&google_domain=google.gm (https://serpapi.com/search?q=Coffee&google_domain=google.gm)
+google.gp
+Guadeloupe
+https://serpapi.com/search?q=Coffee&google_domain=google.gp (https://serpapi.com/search?q=Coffee&google_domain=google.gp)
+google.gr
+Greece
+https://serpapi.com/search?q=Coffee&google_domain=google.gr (https://serpapi.com/search?q=Coffee&google_domain=google.gr)
+google.gy
+Guyana
+https://serpapi.com/search?q=Coffee&google_domain=google.gy (https://serpapi.com/search?q=Coffee&google_domain=google.gy)
+google.hn
+Honduras
+https://serpapi.com/search?q=Coffee&google_domain=google.hn (https://serpapi.com/search?q=Coffee&google_domain=google.hn)
+google.hr
+Croatia
+https://serpapi.com/search?q=Coffee&google_domain=google.hr (https://serpapi.com/search?q=Coffee&google_domain=google.hr)
+google.ht
+Haiti
+https://serpapi.com/search?q=Coffee&google_domain=google.ht (https://serpapi.com/search?q=Coffee&google_domain=google.ht)
+google.hu
+Hungary
+https://serpapi.com/search?q=Coffee&google_domain=google.hu (https://serpapi.com/search?q=Coffee&google_domain=google.hu)
+google.ie
+Ireland
+https://serpapi.com/search?q=Coffee&google_domain=google.ie (https://serpapi.com/search?q=Coffee&google_domain=google.ie)
+google.iq
+Iraq
+https://serpapi.com/search?q=Coffee&google_domain=google.iq (https://serpapi.com/search?q=Coffee&google_domain=google.iq)
+google.is
+Iceland
+https://serpapi.com/search?q=Coffee&google_domain=google.is (https://serpapi.com/search?q=Coffee&google_domain=google.is)
+google.it
+Italy
+https://serpapi.com/search?q=Coffee&google_domain=google.it (https://serpapi.com/search?q=Coffee&google_domain=google.it)
+google.je
+Jersey
+https://serpapi.com/search?q=Coffee&google_domain=google.je (https://serpapi.com/search?q=Coffee&google_domain=google.je)
+google.jo
+Jordan
+https://serpapi.com/search?q=Coffee&google_domain=google.jo (https://serpapi.com/search?q=Coffee&google_domain=google.jo)
+google.kg
+Kyrgyzstan
+https://serpapi.com/search?q=Coffee&google_domain=google.kg (https://serpapi.com/search?q=Coffee&google_domain=google.kg)
+google.ki
+Kiribati
+https://serpapi.com/search?q=Coffee&google_domain=google.ki (https://serpapi.com/search?q=Coffee&google_domain=google.ki)
+google.kz
+Kazakhstan
+https://serpapi.com/search?q=Coffee&google_domain=google.kz (https://serpapi.com/search?q=Coffee&google_domain=google.kz)
+google.la
+Laos
+https://serpapi.com/search?q=Coffee&google_domain=google.la (https://serpapi.com/search?q=Coffee&google_domain=google.la)
+google.li
+Liechtenstein
+https://serpapi.com/search?q=Coffee&google_domain=google.li (https://serpapi.com/search?q=Coffee&google_domain=google.li)
+google.lk
+Sri Lanka
+https://serpapi.com/search?q=Coffee&google_domain=google.lk (https://serpapi.com/search?q=Coffee&google_domain=google.lk)
+google.lt
+Lithuania
+https://serpapi.com/search?q=Coffee&google_domain=google.lt (https://serpapi.com/search?q=Coffee&google_domain=google.lt)
+google.lu
+Luxembourg
+https://serpapi.com/search?q=Coffee&google_domain=google.lu (https://serpapi.com/search?q=Coffee&google_domain=google.lu)
+google.lv
+Latvia
+https://serpapi.com/search?q=Coffee&google_domain=google.lv (https://serpapi.com/search?q=Coffee&google_domain=google.lv)
+google.md
+Moldova
+https://serpapi.com/search?q=Coffee&google_domain=google.md (https://serpapi.com/search?q=Coffee&google_domain=google.md)
+google.mg
+Madagascar
+https://serpapi.com/search?q=Coffee&google_domain=google.mg (https://serpapi.com/search?q=Coffee&google_domain=google.mg)
+google.mk
+Macedonia
+https://serpapi.com/search?q=Coffee&google_domain=google.mk (https://serpapi.com/search?q=Coffee&google_domain=google.mk)
+google.ml
+Mali
+https://serpapi.com/search?q=Coffee&google_domain=google.ml (https://serpapi.com/search?q=Coffee&google_domain=google.ml)
+google.mn
+Mongolia
+https://serpapi.com/search?q=Coffee&google_domain=google.mn (https://serpapi.com/search?q=Coffee&google_domain=google.mn)
+google.ms
+Montserrat
+https://serpapi.com/search?q=Coffee&google_domain=google.ms (https://serpapi.com/search?q=Coffee&google_domain=google.ms)
+google.mu
+Mauritius
+https://serpapi.com/search?q=Coffee&google_domain=google.mu (https://serpapi.com/search?q=Coffee&google_domain=google.mu)
+google.mv
+Maldives
+https://serpapi.com/search?q=Coffee&google_domain=google.mv (https://serpapi.com/search?q=Coffee&google_domain=google.mv)
+google.mw
+Malawi
+https://serpapi.com/search?q=Coffee&google_domain=google.mw (https://serpapi.com/search?q=Coffee&google_domain=google.mw)
+google.ne
+Niger
+https://serpapi.com/search?q=Coffee&google_domain=google.ne (https://serpapi.com/search?q=Coffee&google_domain=google.ne)
+google.nl
+Netherlands
+https://serpapi.com/search?q=Coffee&google_domain=google.nl (https://serpapi.com/search?q=Coffee&google_domain=google.nl)
+google.no
+Norway
+https://serpapi.com/search?q=Coffee&google_domain=google.no (https://serpapi.com/search?q=Coffee&google_domain=google.no)
+google.nr
+Nauru
+https://serpapi.com/search?q=Coffee&google_domain=google.nr (https://serpapi.com/search?q=Coffee&google_domain=google.nr)
+google.nu
+Niue
+https://serpapi.com/search?q=Coffee&google_domain=google.nu (https://serpapi.com/search?q=Coffee&google_domain=google.nu)
+google.pl
+Poland
+https://serpapi.com/search?q=Coffee&google_domain=google.pl (https://serpapi.com/search?q=Coffee&google_domain=google.pl)
+google.ps
+Palestine
+https://serpapi.com/search?q=Coffee&google_domain=google.ps (https://serpapi.com/search?q=Coffee&google_domain=google.ps)
+google.pt
+Portugal
+https://serpapi.com/search?q=Coffee&google_domain=google.pt (https://serpapi.com/search?q=Coffee&google_domain=google.pt)
+google.ro
+Romania
+https://serpapi.com/search?q=Coffee&google_domain=google.ro (https://serpapi.com/search?q=Coffee&google_domain=google.ro)
+google.rs
+Serbia
+https://serpapi.com/search?q=Coffee&google_domain=google.rs (https://serpapi.com/search?q=Coffee&google_domain=google.rs)
+google.ru
+Russia
+https://serpapi.com/search?q=Coffee&google_domain=google.ru (https://serpapi.com/search?q=Coffee&google_domain=google.ru)
+google.rw
+Rwanda
+https://serpapi.com/search?q=Coffee&google_domain=google.rw (https://serpapi.com/search?q=Coffee&google_domain=google.rw)
+google.sc
+Seychelles
+https://serpapi.com/search?q=Coffee&google_domain=google.sc (https://serpapi.com/search?q=Coffee&google_domain=google.sc)
+google.se
+Sweden
+https://serpapi.com/search?q=Coffee&google_domain=google.se (https://serpapi.com/search?q=Coffee&google_domain=google.se)
+google.sh
+Saint Helena, Ascension and Tristan da Cunha
+https://serpapi.com/search?q=Coffee&google_domain=google.sh (https://serpapi.com/search?q=Coffee&google_domain=google.sh)
+google.si
+Slovenia
+https://serpapi.com/search?q=Coffee&google_domain=google.si (https://serpapi.com/search?q=Coffee&google_domain=google.si)
+google.sk
+Slovakia
+https://serpapi.com/search?q=Coffee&google_domain=google.sk (https://serpapi.com/search?q=Coffee&google_domain=google.sk)
+google.sm
+San Marino
+https://serpapi.com/search?q=Coffee&google_domain=google.sm (https://serpapi.com/search?q=Coffee&google_domain=google.sm)
+google.sn
+Senegal
+https://serpapi.com/search?q=Coffee&google_domain=google.sn (https://serpapi.com/search?q=Coffee&google_domain=google.sn)
+google.so
+Somalia
+https://serpapi.com/search?q=Coffee&google_domain=google.so (https://serpapi.com/search?q=Coffee&google_domain=google.so)
+google.sr
+Suriname
+https://serpapi.com/search?q=Coffee&google_domain=google.sr (https://serpapi.com/search?q=Coffee&google_domain=google.sr)
+google.td
+Chad
+https://serpapi.com/search?q=Coffee&google_domain=google.td (https://serpapi.com/search?q=Coffee&google_domain=google.td)
+google.tg
+Togo
+https://serpapi.com/search?q=Coffee&google_domain=google.tg (https://serpapi.com/search?q=Coffee&google_domain=google.tg)
+google.tk
+Tokelau
+https://serpapi.com/search?q=Coffee&google_domain=google.tk (https://serpapi.com/search?q=Coffee&google_domain=google.tk)
+google.tl
+Timor-Leste
+https://serpapi.com/search?q=Coffee&google_domain=google.tl (https://serpapi.com/search?q=Coffee&google_domain=google.tl)
+google.tm
+Turkmenistan
+https://serpapi.com/search?q=Coffee&google_domain=google.tm (https://serpapi.com/search?q=Coffee&google_domain=google.tm)
+google.tn
+Tunisia
+https://serpapi.com/search?q=Coffee&google_domain=google.tn (https://serpapi.com/search?q=Coffee&google_domain=google.tn)
+google.to
+Tonga
+https://serpapi.com/search?q=Coffee&google_domain=google.to (https://serpapi.com/search?q=Coffee&google_domain=google.to)
+google.tt
+Trinidad and Tobago
+https://serpapi.com/search?q=Coffee&google_domain=google.tt (https://serpapi.com/search?q=Coffee&google_domain=google.tt)
+google.vg
+British Virgin Islands
+https://serpapi.com/search?q=Coffee&google_domain=google.vg (https://serpapi.com/search?q=Coffee&google_domain=google.vg)
+google.vu
+Vanuatu
+https://serpapi.com/search?q=Coffee&google_domain=google.vu (https://serpapi.com/search?q=Coffee&google_domain=google.vu)
+google.ws
+Samoa
+https://serpapi.com/search?q=Coffee&google_domain=google.ws (https://serpapi.com/search?q=Coffee&google_domain=google.ws)
+Sub-link: https://serpapi.com/locations-api
+(https://serpapi.com/locations-api)
+Supported Locations API - SerpApi
+Supported Locations API
+Locations API allows you to search SerpApi supported locations. It should return an array of locations ordered by reach. Locations that reach the most people will be first.
+This API is free to use
+. Download the full
+JSON
+list of
+supported locations:
+Download
+You can query
+https://serpapi.com/locations.json (https://serpapi.com/locations.json)
+using a
+GET
+request with these parameters:
+API Parameters
+q
+Optional
+Parameter restricts your search to locations that contain the supplied string. (e.g.,
+Austin
+will find 'Austin, TX', 'The University of Texas at Austin', 'Rochester, MN-Mason City, IA-Austin, MN,United States', etc.)
+limit
+Optional
+Parameter limits the number of locations returned. (e.g.,
+5
+will return only 5 locations. Maximum is 10.)
+API Examples
+Locations API example
+The URL below fetches the 5 biggest locations that contains "Austin" in their name in our database. You can then use the location canonical name (e.g.,
+"Austin,Texas,United States"
+) or the location id (e.g.,
+"585069efee19ad271e9c9b36"
+) as the value of the param
+location
+for the
+/search
+API to get more precise results.
+GET
+https://serpapi.com/locations.json?q=Austin&limit=5 (https://serpapi.com/locations.json?q=Austin&limit=5)
+JSON Example
+{ { "id": "585069bdee19ad271e9bc072", "google_id": 200635, "google_parent_id": 21176, "name": "Austin, TX", "canonical_name": "Austin, TX,Texas,United States", "country_code":
+"US", "target_type": "DMA Region", "reach": 5560000, "gps": [ -97.7430608, 30.267153 ] }, { "id": "585069b8ee19ad271e9ba949", "google_id": 1026201, "google_parent_id": 21176,
+"name": "Austin", "canonical_name": "Austin,Texas,United States", "country_code": "US", "target_type": "City", "reach": 4870000, "gps": [ -97.7430608, 30.267153 ] }, { "id":
+"585069bdee19ad271e9bc05e", "google_id": 200611, "google_parent_id": 2840, "name": "Rochester, MN-Mason City, IA-Austin, MN", "canonical_name": "Rochester, MN-Mason City,
+IA-Austin, MN,United States", "country_code": "US", "target_type": "DMA Region", "reach": 555000 }, { "id": "585069eeee19ad271e9c9632", "google_id": 9060008,
+"google_parent_id": 21176, "name": "The University of Texas at Austin", "canonical_name": "The University of Texas at Austin,Texas,United States", "country_code": "US",
+"target_type": "University", "reach": 250000, "gps": [ -97.7340567, 30.2849185 ] }, { "id": "585069edee19ad271e9c93df", "google_id": 9059413, "google_parent_id": 21176, "name":
+"Austin County", "canonical_name": "Austin County,Texas,United States", "country_code": "US", "target_type": "County", "reach": 157000, "gps": [ -96.2800864, 29.8711291 ] } }
+
