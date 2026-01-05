@@ -8,9 +8,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Scraper output
+# Scraper output and docs
 *.md
+*.pdf
+*.txt
 !README.md
+docs/
 
 # Logs and temp files
 *.log
